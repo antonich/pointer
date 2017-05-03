@@ -1,4 +1,4 @@
-#!/home/antonich/Documents/dev/python/projects/pointer/env/bin/python
+#!/Users/antonich/Documents/dev/projects/pointer/env/bin/python
 from django.core import management
 
 if __name__ == "__main__":
