@@ -1,8 +1,6 @@
 from django.test import TestCase
-from django.utils.html import escape
-from django.contrib.auth.models import *
 from django.core.exceptions import ValidationError
-from django.db.models import Q
+from django.db import IntegrityError
 
 from users.models import User
 
@@ -32,3 +30,19 @@ class UserTest(TestCase):
         with self.assertRaises(ValidationError):
             user = self.createUser(email=self.email, username=self.username, password=self.password, desc='sandoiasndoia\
                 sdofndsonfodsinfosidnfosdnfodnsoifnwoifnpwemf-wejf-wefnw-eofnweoinfoiwenfoiwenoifnweoifnwoeifoiwnefoinwoifnw')
+
+    ''' Not necessary '''
+    def testUserWithAlreadyUsedEmailOrUsername(self):
+        user = self.createUser(self.username, self.email, self.password)
+        # Checks if user is in use with used username or email
+        with self.assertRaises(ValidationError):
+            User.objects.is_already_in_use(self.email, self.username)
+
+    def testUserWithAlreadyUsedEmailOrUsernameWithoutUserObject(self):
+        user = self.createUser(self.username, self.email, self.password)
+
+        try:
+            user1 = self.createUser(self.username, self.email, self.password)
+            user1.save()
+        except IntegrityError:
+            pass

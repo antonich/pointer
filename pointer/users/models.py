@@ -1,8 +1,8 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from django.conf import settings
-from django.core.exceptions import ValidationError
-from django.db.models import Q
+from django.core.exceptions import ValidationError, ObjectDoesNotExist
+from django.db import IntegrityError
 
 '''
     Manager for user below
@@ -41,6 +41,13 @@ class UserManager(BaseUserManager):
         user.is_superuser = True
         user.save(using = self._db)
         return user
+
+    def is_already_in_use(self, email, username):
+        try:
+            user = self.create_user(email=email, username=username)
+            return 0
+        except IntegrityError: # Error for already in use email or username
+            raise ValidationError('This user is already in user')
 
 '''
     Model to represent User
