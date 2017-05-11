@@ -25,6 +25,13 @@ class UserCreationSerializerTest(TestCase):
             serial = UserCreationSerializer(data=self.data)
             self.assertFalse(serial.is_valid(raise_exception=True))
 
+    def test_user_with_incorrect_email(self):
+        self.data = self.set_data(email='email')
+
+        with self.assertRaises(serializers.ValidationError):
+            serial = UserCreationSerializer(data=self.data)
+            self.assertFalse(serial.is_valid(raise_exception=True))
+
     def test_username_is_required(self):
         self.data = self.set_data(usern='')
 
