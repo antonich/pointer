@@ -1,10 +1,12 @@
 from django.contrib.auth.models import Group
 from rest_framework import serializers
+from django.contrib.auth import authenticate, login, logout
 
 from .models import User
 
-class UserCreationSerializer(serializers.ModelSerializer):
+VALIDATION_ERROR = 'User is not defined.'
 
+class UserCreationSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('username', 'email', 'name', 'password')
