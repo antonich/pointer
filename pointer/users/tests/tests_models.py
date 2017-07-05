@@ -6,6 +6,7 @@ from django.db.models import Q
 
 from users.models import User
 
+
 class UserTest(TestCase):
     def setUp(self):
         self.password = 'test123'
@@ -32,3 +33,4 @@ class UserTest(TestCase):
         with self.assertRaises(ValidationError):
             user = self.createUser(email=self.email, username=self.username, password=self.password, desc='sandoiasndoia\
                 sdofndsonfodsinfosidnfosdnfodnsoifnwoifnpwemf-wejf-wefnw-eofnweoinfoiwenfoiwenoifnweoifnwoeifoiwnefoinwoifnw')
+
