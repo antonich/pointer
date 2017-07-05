@@ -1,0 +1,2 @@
+Users:
+- IS_ACTIVE is set when user checks his email;

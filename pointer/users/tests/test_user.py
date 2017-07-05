@@ -1,5 +1,4 @@
 from django.test import TestCase
-from rest_framework import serializers
 from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import AnonymousUser
@@ -22,7 +21,7 @@ class UserLoginTest(TestCase):
         user = authenticate(username=data['username'], password=data['password'])
         self.assertTrue(user.is_authenticated)
 
-    def test_user_authentication_fails(self):
+    def test_user_authentication_and_login_fails(self):
         data = self.setData('antonich', 'testio')
         user1 = authenticate(username=data['username'], password=data['password'])
         self.assertEqual(user1, None)
