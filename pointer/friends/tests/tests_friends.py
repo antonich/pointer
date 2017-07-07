@@ -9,7 +9,7 @@ class TestFriends(TestCase):
         self.user1 = User.objects.create_user(username="User1", email="email1")
         self.user2 = User.objects.create_user(username="User2", email="email2")
         self.user3 = User.objects.create_user(username="User3", email="email3")
-        self.user4 = User.objects.create_user(username="User4", email="email4")
+        self.user4 = User.objects.create_user(username="User5", email="email4")
 
     def test_request_sent(self):
         Request.objects.send_request(from_user=self.user1, to_user=self.user2)
