@@ -27,25 +27,3 @@ class UserCreationSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
-
-class UserLoginSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id', 'username', 'password')
-        write_only_fields = ('password',)
-        read_only_fields = ('id',)
-
-    def validate(self, data):
-        '''
-            Authenticate user
-        '''
-        username = data['username']
-        password = data['password']
-        user = authenticate(username=username, password=password)
-
-        if user is None:
-            raise serializers.ValidationError("User is not authenticated.")
-        else:
-            return data
-
-        return data

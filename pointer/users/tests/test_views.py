@@ -136,4 +136,10 @@ class UserLoginViewTest(TestCase):
         request = self.client.post('/users/login/', {
             'username': data['username'], 'password': data['password']
         })
-        self.assertEqual(request.status_code, 200)
+
+        user = auth.get_user(self.client)
+        self.assertEqual(user, self.user)
+
+        self.client.logout()
+        user = auth.get_user(self.client)
+        self.assertTrue(user.is_anonymous())

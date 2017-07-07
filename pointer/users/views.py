@@ -1,7 +1,8 @@
 from django.http import Http404
 from django.contrib.auth import get_user_model # for not custom user model
+from django.contrib.auth import authenticate, login, logout
 
-from .serializers import UserCreationSerializer, UserLoginSerializer
+from .serializers import UserCreationSerializer
 from .models import User
 
 from rest_framework import viewsets
@@ -9,6 +10,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, generics, mixins, permissions
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.authtoken.models import Token
 
 # Create your views here.
 
@@ -40,13 +42,14 @@ class UserLoginView(APIView):
         if not request.user.is_anonymous():
             return Response(status=status.HTTP_400_BAD_REQUEST)
         else:
-            serializer = UserLoginSerializer(data=request.data)
-            try:
-                if serializer.is_valid():
-                    return Response(serializer.data, status=status.HTTP_200_OK)#, {'Token': 'token'})
-                print serializer.errors
-                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-            except:
-                pass
+            username = request.data['username']
+            password = request.data['password']
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                token = User.objects.get_user_token(user=user)
+                return Response({'token': token.key}, status=status.HTTP_200_OK)
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
 
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_400_BAD_REQUEST)

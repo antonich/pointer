@@ -46,6 +46,9 @@ class UserManager(BaseUserManager):
         user.save(using = self._db)
         return user
 
+    def get_user_token(self, user):
+        return Token.objects.get(user=user)
+
     def is_already_in_use(self, email, username):
         try:
             user = self.create_user(email=email, username=username)
