@@ -59,10 +59,15 @@ class TestFriends(TestCase):
         self.assertTrue(self.user2 in Request.objects.friends_list(self.user1) and
                         self.user3 in Request.objects.friends_list(self.user1))
 
-
     def test_request_is_declined(self):
         Request.objects.send_request(from_user=self.user1, to_user=self.user2)
         Request.objects.filter(to_user=self.user2)[0].decline()
         self.assertEqual(Request.objects.all().count(), 0)
 
+    def test_friendship_deleted(self):
+        Request.objects.send_request(from_user=self.user1, to_user=self.user2)
+        Request.objects.filter(from_user=self.user1)[0].accept()
+        self.assertTrue(Request.objects.are_friends(self.user1, self.user2))
+        Friendship.objects.remove_friendship(self.user1, self.user2)
+        self.assertFalse(Request.objects.are_friends(self.user1, self.user2))
 

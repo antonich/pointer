@@ -6,7 +6,7 @@ from .forms import FriendshipForm
 
 class FriendshipAdmin(admin.ModelAdmin):
     form = FriendshipForm
-    list_display = ('userid1', 'userid2',)
+    list_display = ('from_user', 'to_user',)
 
 
 admin.site.register(Friendship, FriendshipAdmin)

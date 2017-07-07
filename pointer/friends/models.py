@@ -17,13 +17,13 @@ AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 class FriendshipManager(models.Manager):
 
     def friends_list(self, user):
-        friendships = Friendship.objects.filter(Q(userid1=user) | Q(userid2=user)).all()
+        friendships = Friendship.objects.filter(Q(from_user=user) | Q(to_user=user)).all()
         people = list()
         for fs in friendships:
-            if fs.userid1 == user:
-                people.append(fs.userid2)
+            if fs.from_user == user:
+                people.append(fs.to_user)
             else:
-                people.append(fs.userid1)
+                people.append(fs.from_user)
         return people
 
 
@@ -53,6 +53,12 @@ class FriendshipManager(models.Manager):
 
         Request.objects.create(from_user=from_user, to_user=to_user)
 
+    def remove_friendship(self, from_user, to_user):
+        """deletes a friendship """
+        friendship = Friendship.objects.get(from_user=from_user, to_user=to_user)
+        if friendship:
+            friendship.delete()
+
     def are_friends(self, user1, user2):
         if user1 in self.friends_list(user2):
             return True
@@ -62,12 +68,12 @@ class FriendshipManager(models.Manager):
 
 class Friendship(models.Model):
     """Model to represent friendship between two people"""
-    userid1 = models.ForeignKey(
+    from_user = models.ForeignKey(
         AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='user1',
     )
-    userid2 = models.ForeignKey(
+    to_user = models.ForeignKey(
         AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='user2',
@@ -77,7 +83,7 @@ class Friendship(models.Model):
     objects = FriendshipManager()
 
     def __unicode__(self):
-        return "User #%s is friends with #%s" % (self.userid1, self.userid2)
+        return "User #%s is friends with #%s" % (self.from_user, self.to_user)
 
 
 class Request(models.Model):
@@ -94,8 +100,8 @@ class Request(models.Model):
     objects = FriendshipManager()
 
     def accept(self):
-        Friendship.objects.create(userid1=self.from_user,
-                                  userid2=self.to_user)
+        Friendship.objects.create(from_user=self.from_user,
+                                  to_user=self.to_user)
         self.delete()
 
     def decline(self):
