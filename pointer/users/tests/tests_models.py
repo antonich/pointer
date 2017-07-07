@@ -23,7 +23,7 @@ class UserTest(TestCase):
 
     def testUserFailsWithoutEmail(self):
         with self.assertRaises(ValueError):
-            user = self.createUser(email="", username=self.username, password=self.password)
+            self.createUser(email="", username=self.username, password=self.password)
 
     def testUserFailsWithoutUsername(self):
         with self.assertRaises(ValueError):

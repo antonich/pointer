@@ -31,7 +31,7 @@ class UserManager(BaseUserManager):
         )
 
         user.set_password(password)
-        user.save(using = self._db)
+        user.save(using=self._db)
         return user
 
     def create_superuser(self, username, email, password='', description='', name=''):
@@ -54,7 +54,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     #Editable stuff
     name = models.CharField(max_length=130, blank=True, default='')
     description = models.CharField(max_length=100, blank=True, default='')
-    avatar = models.ImageField(upload_to='images')
+    #avatar = models.ImageField(upload_to='images')
 
     objects = UserManager()
 
