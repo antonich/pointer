@@ -2,7 +2,7 @@ from django.core.exceptions import ValidationError
 from django.test import TestCase
 from users.models import User
 from friends.models import Request, Friendship
-
+from friends.exceptions import AlreadyExistsError,AlreadyFriendsError
 
 class TestFriends(TestCase):
     def setUp(self):
@@ -38,16 +38,16 @@ class TestFriends(TestCase):
         Request.objects.filter(from_user=self.user1)[0].accept()
         self.assertTrue(Friendship.objects.all().count(), 1)
 
-    def test_are_frriends_is_working(self):
+    def test_are_friends_is_working(self):
         Request.objects.send_request(from_user=self.user1, to_user=self.user2)
         Request.objects.filter(from_user=self.user1)[0].accept()
         self.assertTrue(Request.objects.are_friends(self.user1, self.user2))
         self.assertFalse(Request.objects.are_friends(self.user1, self.user3))
 
-    def test_send_wrond_request_to_friend(self):
+    def test_users_already_friends(self):
         Request.objects.send_request(from_user=self.user1, to_user=self.user2)
         Request.objects.filter(from_user=self.user1)[0].accept()
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(AlreadyFriendsError):
             Request.objects.send_request(from_user=self.user1, to_user=self.user2)
 
     def test_right_friendslist_returned(self):
@@ -71,3 +71,7 @@ class TestFriends(TestCase):
         Friendship.objects.remove_friendship(self.user1, self.user2)
         self.assertFalse(Request.objects.are_friends(self.user1, self.user2))
 
+    def test_raise_friendship_already_requested(self):
+        Request.objects.send_request(from_user=self.user1, to_user=self.user2)
+        with self.assertRaises(AlreadyExistsError):
+            Request.objects.send_request(from_user=self.user1, to_user=self.user2)

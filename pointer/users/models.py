@@ -1,8 +1,12 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from django.conf import settings
-from django.core.exceptions import ValidationError
-from django.db.models import Q
+from django.core.exceptions import ValidationError, ObjectDoesNotExist
+from django.db import IntegrityError
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
 
 '''
     Manager for user below
@@ -31,7 +35,7 @@ class UserManager(BaseUserManager):
         )
 
         user.set_password(password)
-        user.save(using=self._db)
+        user.save(using = self._db)
         return user
 
     def create_superuser(self, username, email, password='', description='', name=''):
@@ -39,8 +43,19 @@ class UserManager(BaseUserManager):
         user.is_active = True
         user.is_admin = True
         user.is_superuser = True
-        user.save(using=self._db)
+        user.save(using = self._db)
         return user
+
+    def get_user_token(self, user):
+        return Token.objects.get(user=user)
+
+    def is_already_in_use(self, email, username):
+        try:
+            user = self.create_user(email=email, username=username)
+            return 0
+        except IntegrityError: # Error for already in use email or username
+            raise ValidationError('This user is already in user')
+
 
 
 '''
@@ -49,12 +64,10 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=100, unique=True)
     username = models.CharField(max_length=40, unique=True)
-    is_active = models.BooleanField(default=False)
-    is_admin = models.BooleanField(default=False)
-    #Editable stuff
     name = models.CharField(max_length=130, blank=True, default='')
     description = models.CharField(max_length=100, blank=True, default='')
-    #avatar = models.ImageField(upload_to='images')
+    is_active = models.BooleanField(default=False)
+    is_admin = models.BooleanField(default=False)
 
     objects = UserManager()
 
@@ -84,4 +97,3 @@ class User(AbstractBaseUser, PermissionsMixin):
     @property
     def is_staff(self):
         return self.is_admin
-
