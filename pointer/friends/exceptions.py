@@ -7,3 +7,7 @@ class AlreadyExistsError(IntegrityError):
 
 class AlreadyFriendsError(IntegrityError):
     pass
+
+
+class FriendshipNotFoundError(IntegrityError):
+    pass

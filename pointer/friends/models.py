@@ -6,7 +6,7 @@ from django.db import models
 from django.conf import settings
 from django.db.models import Q
 from django.utils import timezone
-from friends.exceptions import AlreadyFriendsError, AlreadyExistsError
+from friends.exceptions import *
 from users.models import User
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
@@ -45,7 +45,7 @@ class FriendshipManager(models.Manager):
 
     def send_request(self, from_user, to_user):
         """Creates a friendship request"""
-        if from_user is to_user:
+        if from_user == to_user:
             raise ValidationError("Users cannot be friends with themselves")
 
         if self.are_friends(from_user, to_user):
@@ -59,8 +59,12 @@ class FriendshipManager(models.Manager):
     def remove_friendship(self, from_user, to_user):
         """deletes a friendship """
         friendship = Friendship.objects.get(from_user=from_user, to_user=to_user)
+        if not friendship:  # try to find friendship vice-versa
+            friendship = Friendship.objects.get(from_user=to_user, to_user=from_user)
         if friendship:
             friendship.delete()
+        else:
+            raise FriendshipNotFoundError
 
     def are_friends(self, user1, user2):
         if user1 in self.friends_list(user2):

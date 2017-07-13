@@ -7,5 +7,7 @@ urlpatterns = [
     url(r'received_requests_list/$', received_requests_list),
     url(r'sent_requests_list/$', sent_requests_list),
     url(r'send_request/(?P<to_username>[\w-]+)/$', send_request),
-    url(r'accept_request/(?P<pk>[0-9]+)/$', accept_request)
+    url(r'accept_request/(?P<pk>[0-9]+)/$', accept_request),
+    url(r'decline_request/(?P<pk>[0-9]+)/$', decline_request),
+    url(r'remove_friendship/(?P<pk>[0-9]+)/$', remove_friendship)
 ]

@@ -44,6 +44,10 @@ class TestFriends(TestCase):
         self.assertTrue(Request.objects.are_friends(self.user1, self.user2))
         self.assertFalse(Request.objects.are_friends(self.user1, self.user3))
 
+    def test_send_request_to_itself(self):
+        with self.assertRaises(ValidationError):
+            Request.objects.send_request(from_user=self.user1, to_user=self.user1)
+
     def test_users_already_friends(self):
         Request.objects.send_request(from_user=self.user1, to_user=self.user2)
         Request.objects.filter(from_user=self.user1)[0].accept()
@@ -75,3 +79,4 @@ class TestFriends(TestCase):
         Request.objects.send_request(from_user=self.user1, to_user=self.user2)
         with self.assertRaises(AlreadyExistsError):
             Request.objects.send_request(from_user=self.user1, to_user=self.user2)
+
