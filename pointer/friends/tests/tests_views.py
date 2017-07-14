@@ -37,7 +37,7 @@ class FriendsViewTest(TestCase):
         Request.objects.send_request(from_user=self.user4, to_user=self.user1)
         requestslist = self.client.get('/friends/received_requests_list/')
         requestslist.render()
-        print("Received requests list")
+        print("Received requests list:")
         print(requestslist.content)
         self.assertEqual(requestslist.status_code, 200)
 
@@ -60,7 +60,7 @@ class FriendsViewTest(TestCase):
     def test_send_new_request(self):
         response = self.client.post("/friends/send_request/User2/")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(Request.objects.all().count(), 1)\
+        self.assertEqual(Request.objects.all().count(), 1)
 
     def test_send_new_request_to_itself(self):
         response = self.client.post("/friends/send_request/User1/")
@@ -68,9 +68,8 @@ class FriendsViewTest(TestCase):
         self.assertEqual(Request.objects.all().count(), 0)
 
     def test_accept_request(self):
-        Request.objects.send_request(from_user=self.user1, to_user=self.user2)
-        request = Request.objects.get(from_user=self.user1, to_user=self.user2)
-        response = self.client.post("/friends/accept_request/%d/" % request.id)
+        Request.objects.send_request(from_user=self.user2, to_user=self.user1)
+        response = self.client.post("/friends/accept_request/User2/")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(Friendship.objects.all().count(), 1)
 
@@ -98,40 +97,25 @@ class FriendsViewTest(TestCase):
 
         Request.objects.send_request(from_user=self.user1, to_user=self.user2)
         request = Request.objects.get(from_user=self.user1, to_user=self.user2)
-        response = self.client.post("/friends/accept_request/%d/" % request.id)
+        response = self.client.post("/friends/accept_request/User2/")
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_accept_nonexistent_request(self):
-        response = self.client.post("/friends/accept_request/1/")
+        response = self.client.post("/friends/accept_request/User2/")
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_decline_request(self):
         Request.objects.send_request(from_user=self.user2, to_user=self.user1)
-        request = Request.objects.get(from_user=self.user2, to_user=self.user1)
-        response = self.client.post("/friends/decline_request/%d/" % request.id)
+        response = self.client.post("/friends/decline_request/User2/")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(Request.objects.all().count(), 0)
-
-    def test_user_can_decline_only_its_requests(self):
-        Request.objects.send_request(from_user=self.user3, to_user=self.user2)
-        request = Request.objects.get(from_user=self.user3, to_user=self.user2)
-        response = self.client.post("/friends/decline_request/%d/" % request.id)
-        self.assertEqual(Request.objects.all().count(), 1)
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_remove_friendship(self):
         Request.objects.send_request(from_user=self.user1, to_user=self.user2)
         Request.objects.filter(from_user=self.user1)[0].accept()
         friendship = Friendship.objects.get(from_user=self.user1, to_user=self.user2)
-        response = self.client.post("/friends/remove_friendship/%d/" % friendship.id)
+        response = self.client.post("/friends/remove_friendship/User2/")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(Friendship.objects.all().count(), 0)
 
-    def test_user_cant_remove_not_itself_friendship(self):
-        Request.objects.send_request(from_user=self.user3, to_user=self.user2)
-        Request.objects.filter(from_user=self.user3)[0].accept()
-        friendship = Friendship.objects.get(from_user=self.user3, to_user=self.user2)
-        response = self.client.post("/friends/remove_friendship/%d/" % friendship.id)
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(Friendship.objects.all().count(), 1)
 

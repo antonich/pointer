@@ -11,3 +11,7 @@ class AlreadyFriendsError(IntegrityError):
 
 class FriendshipNotFoundError(IntegrityError):
     pass
+
+
+class RequestNotFoundError(IntegrityError):
+    pass
