@@ -56,11 +56,6 @@ class UserManager(BaseUserManager):
         except IntegrityError: # Error for already in use email or username
             raise ValidationError('This user is already in user')
 
-    @receiver(post_save, sender=settings.AUTH_USER_MODEL)
-    def create_auth_token(sender, instance=None, created=False, **kwargs):
-        if created:
-            Token.objects.create(user=instance)
-
 '''
     Model to represent User
 '''

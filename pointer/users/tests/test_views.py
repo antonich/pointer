@@ -4,11 +4,14 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import AnonymousUser
 
 from users.models import User
+from rest_framework.authtoken.models import Token
 from users.views import UserCreationView
 
 BLANK_FIELD = 'This field may not be blank.'
 REG_USERNAME = 'user with this username already exists.'
 REG_EMAIL = 'user with this email already exists.'
+WRONG_PASSWORD = 'The password is wrong.'
+UNAUTH_USER = 'This user is not authenticated.'
 
 class UserCreationViewTest(TestCase):
     def setUp(self):
@@ -133,13 +136,58 @@ class UserLoginViewTest(TestCase):
         # logout before login
         self.client.logout()
 
+        # send request to login
         request = self.client.post('/users/login/', {
             'username': data['username'], 'password': data['password']
         })
-
+        # get current user
         user = auth.get_user(self.client)
         self.assertEqual(user, self.user)
 
+        # check if loged user gets the same token
+        token = User.objects.get_user_token(user)
+        self.assertEqual(request.data['token'], token.key)
+
+        # logout and check if user is anonymous
         self.client.logout()
         user = auth.get_user(self.client)
         self.assertTrue(user.is_anonymous())
+
+    def test_unauth_user(self):
+        request = self.client.post('/users/login/', {
+            'username': self.user.username, 'password': '123123'
+        })
+
+        user = auth.get_user(self.client)
+        self.assertTrue(user.is_anonymous())
+
+        self.assertEqual(request.status_code, 401)
+        self.assertEqual(UNAUTH_USER, request.data['errors'])
+
+    def test_auth_user_cant_get_access_to_this_page(self):
+        # first login
+        user = self.client.login(username=self.user.username, \
+            password='testcase123')
+
+        # then post a request
+        request = self.client.post('/users/login/', {
+            'username': self.user.username, 'password': 'testcase123'
+        })
+
+        user = auth.get_user(self.client)
+        self.assertFalse(user.is_anonymous())
+
+        self.assertEqual(request.status_code, 400)
+
+    def test_registered_user_doesnt_have_access_if_not_active(self):
+        user = User.objects.create_user(username='antonich', \
+            email="antonio123@gmail.com", password="testing123123")
+        user.save()
+
+        request = self.client.post('/users/login/', {
+            'username': user.username, 'password': 'testing123123'
+        })
+        user = auth.get_user(self.client)
+        self.assertTrue(user.is_anonymous())
+
+        self.assertTrue(request.status_code, 401)

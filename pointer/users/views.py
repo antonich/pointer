@@ -11,9 +11,11 @@ from rest_framework.response import Response
 from rest_framework import status, generics, mixins, permissions
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
 
-# Create your views here.
-
+WRONG_PASSWORD = 'The password is wrong.'
+UNAUTH_USER = 'This user is not authenticated.'
+CONFIRM_EMAIL = 'Check your email to confirm registation.'
 
 '''
     API Views
@@ -31,7 +33,7 @@ class UserCreationView(generics.CreateAPIView):
 
 class UserLoginView(APIView):
     '''
-        User login view
+        Authenticates, logins and creates token!!!
     '''
     model = get_user_model()
     permission_classes = [
@@ -46,10 +48,27 @@ class UserLoginView(APIView):
             password = request.data['password']
             user = authenticate(username=username, password=password)
             if user is not None:
-                login(request, user)
-                token = User.objects.get_user_token(user=user)
-                return Response({'token': token.key}, status=status.HTTP_200_OK)
+                if user.is_active:
+                    login(request, user)
+                    token = Token.objects.create(user=user)
+                    token.save()
+                    return Response({'token': token.key}, status=status.HTTP_200_OK)
+                else:
+                    return Response({'errors': CONFIRM_EMAIL}, status=status.HTTP_401_UNAUTHORIZED)
             else:
-                return Response(status=status.HTTP_400_BAD_REQUEST)
+                return Response({'errors': UNAUTH_USER},status=status.HTTP_401_UNAUTHORIZED)
 
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+class UserLogoutView(APIView):
+    '''
+        User logout and deletes token
+    '''
+    model = get_user_model()
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (TokenAuthentication)
+
+    def post(self, request, format=None):
+        token = User.objects.get_user_token(user=request.user)
+        token.delete()
+        logout(request)
+
+        return Response(status=status.HTTP_200_OK)
