@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import AnonymousUser
+from django.core.exceptions import ValidationError, ObjectDoesNotExist
 
 from users.models import User
 from rest_framework.authtoken.models import Token
@@ -130,7 +131,7 @@ class UserLoginViewTest(TestCase):
     def setData(self, username, password):
         return {'username': username, 'password': password}
 
-    def test_user_login_with_correct_data(self):
+    def test_user_login_with_correct_data_gets_token(self):
         data = self.setData(self.user.username, \
             'testcase123')
         # logout before login
@@ -191,3 +192,73 @@ class UserLoginViewTest(TestCase):
         self.assertTrue(user.is_anonymous())
 
         self.assertTrue(request.status_code, 401)
+
+
+class UserActivationTest(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username='testin', \
+            password="testcase123", email="testing123@gmail.com")
+        self.user.is_active = False
+        self.user.save()
+
+    def test_user_cant_login_because_is_not_active(self):
+        # through client login
+        user = self.client.login(username=self.user.username, \
+            password='testcase123')
+
+        user = auth.get_user(self.client)
+        self.assertTrue(user.is_anonymous())
+
+        # through post view request
+        request = self.client.post('/users/login/', {
+            'username': self.user.username, 'password': 'testcase123'
+        })
+
+        user = auth.get_user(self.client)
+        self.assertTrue(user.is_anonymous())
+
+    def test_user_activate_account(self):
+        user = User.objects.create_user(username='antonich123', \
+            email='testing@gmail.com', password="testing123")
+        user.save()
+        request = self.client.post('/users/activate/' + user.activation_key)
+
+        # get user after request
+        user1 = User.objects.get(activation_key=user.activation_key)
+        self.assertTrue(user1.is_active)
+
+        # now user can login
+        self.assertTrue(self.client.login(username=user.username, \
+            password="testing123"))
+
+        # check if login user is the same as wanted
+        user1 = auth.get_user(self.client)
+        self.assertEqual(user1, user)
+
+
+
+
+class UserLogoutTest(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username='testin', \
+            password="testcase123", email="testing123@gmail.com")
+        self.user.is_active = True
+        self.user.save()
+
+    def test_token_deletes_after_loging_out(self):
+        self.client.logout()
+
+        request = self.client.post('/users/login/', {
+            'username': self.user.username, 'password': 'testcase123'
+        })
+
+        # check if not anonymous
+        user = auth.get_user(self.client)
+        self.assertFalse(user.is_anonymous())
+
+        # check token deletes after loging out
+        request = self.client.post('/users/logout/')
+
+        # Validation error because token was deleted after logout
+        with self.assertRaises(ValidationError):
+            token = User.objects.get_user_token(self.user)

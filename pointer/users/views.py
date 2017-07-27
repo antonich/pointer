@@ -62,13 +62,27 @@ class UserLogoutView(APIView):
     '''
         User logout and deletes token
     '''
-    model = get_user_model()
     permission_classes = (IsAuthenticated,)
-    authentication_classes = (TokenAuthentication)
+    #authentication_classes = (TokenAuthentication, )
 
     def post(self, request, format=None):
         token = User.objects.get_user_token(user=request.user)
         token.delete()
         logout(request)
+
+        return Response(status=status.HTTP_200_OK)
+
+class UserActivationView(APIView):
+    '''
+        User needs to activate account though email to be able to login
+    '''
+    permission_classes = [
+        permissions.AllowAny
+    ]
+
+    def post(self, request, key, format=None):
+        user = User.objects.get(activation_key=key)
+        user.is_active = True
+        user.save()
 
         return Response(status=status.HTTP_200_OK)

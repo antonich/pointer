@@ -30,7 +30,6 @@ class UserLoginTest(TestCase):
             password=data['password'])
         self.assertFalse(user2)
 
-
     def test_user_is_logged_in(self):
         data = self.setData('antonich', 'testing123')
         user = authenticate(username=data['username'], password=data['password'])

@@ -6,12 +6,22 @@ from django.db import IntegrityError
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+
 from rest_framework.authtoken.models import Token
+
+import random, string
+
+NO_TOKEN = "This user doesn't have token."
 
 '''
     Manager for user below
     Test are in tests/test_models.py
 '''
+
+def generate_entry():
+    """Generate a random alphanumeric string between 8 and 16 characters long."""
+    return ''.join(random.choice(string.ascii_lowercase + string.digits) for x in range(random.randint(8,16)))
+
 class UserManager(BaseUserManager):
 
     def create_user(self, username, email, description='', name='', password=None):
@@ -31,7 +41,8 @@ class UserManager(BaseUserManager):
             username = username,
             email = self.normalize_email(email),
             name = name,
-            description = description
+            description = description,
+            activation_key = generate_entry()
         )
 
         user.set_password(password)
@@ -47,7 +58,10 @@ class UserManager(BaseUserManager):
         return user
 
     def get_user_token(self, user):
-        return Token.objects.get(user=user)
+        try:
+            return Token.objects.get(user=user)
+        except:
+            raise ValidationError(NO_TOKEN)
 
     def is_already_in_use(self, email, username):
         try:
@@ -66,6 +80,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     description = models.CharField(max_length=100, blank=True, default='')
     is_active = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
+    activation_key = models.CharField(max_length=17, unique=True)
 
     objects = UserManager()
 

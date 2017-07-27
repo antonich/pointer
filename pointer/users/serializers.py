@@ -25,5 +25,14 @@ class UserCreationSerializer(serializers.ModelSerializer):
 
         user.set_password(validated_data['password'])
         user.save()
-
         return user
+
+    # def sendEmail(self, datas):
+    #         link="http://yourdomain.com/activate/"+datas['activation_key']
+    #         c=Context({'activation_link':link,'username':datas['username']})
+    #         f = open(MEDIA_ROOT+datas['email_path'], 'r')
+    #         t = Template(f.read())
+    #         f.close()
+    #         message=t.render(c)
+    #         #print unicode(message).encode('utf8')
+    #         send_mail(datas['email_subject'], message, 'yourdomain <no-reply@yourdomain.com>', [datas['email']], fail_silently=False)
