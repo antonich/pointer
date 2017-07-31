@@ -6,4 +6,4 @@ class FriendshipForm(forms.ModelForm):
 
     class Meta:
         model = Friendship
-        fields = ('userid1', 'userid2',)
+        fields = ('from_user', 'to_user',)

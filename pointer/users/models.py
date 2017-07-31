@@ -100,7 +100,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.is_superuser
 
     def __unicode__(self):
-        return self.email
+        return self.username
 
     ''' Add mail send !!! '''
     # def email_user(self, subject, message, from_email=None, **kwargs):

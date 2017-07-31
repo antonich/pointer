@@ -2,4 +2,7 @@ Users:
 - IS_ACTIVE is set when user checks his email;
 - tests: logout though post request to delete token;
 -- write sending message view; accepting is already writen;
+- write login with facebook profile;
 
+Friends:
+- dont forget to check if reverse request has been sent before sending the request;
