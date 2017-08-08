@@ -119,3 +119,4 @@ class FriendsViewTest(TestCase):
         self.assertEqual(Friendship.objects.all().count(), 0)
 
 
+

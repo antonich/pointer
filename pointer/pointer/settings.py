@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'friends',
+    'events',
     'rest_framework'
 ]
 
