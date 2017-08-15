@@ -26,17 +26,32 @@ class PointerManager(models.Manager):
         pointer.save(using=self._db)
         return pointer
 
+    def get_planned_pointerslist(self, member):
+        """returns list of planned public pointers"""
+        pointers = list()
+        for i in Member.objects.filter(user=member):
+            if not i.pointer.is_private:
+                pointers.append(i.pointer)
+        return pointers
+
     def get_suggested_pointerlist(self, user):
         """returns all public pointers that friends are going to visit"""
         friendslist = Friendship.objects.friends_list(user)
         pointers = list()
-        for user in friendslist:
-            user_pointers = Member.objects.get_planned_pointerslist(user)
-            for up in user_pointers:
-                pointers.append(up)
-        #now we have pointers and we have to remove duplicates and sort it by duplicate quantity
-        #todo
-        return pointers
+        for user in friendslist:# for each friend
+            user_pointers = Pointer.objects.get_planned_pointerslist(user)# getting its pointers
+            for friends_pointer in user_pointers:# for each friend's pointer
+                found_flag = False
+                for el in pointers:#try to add it to suggested list but check if it is already there
+                    if el["pointer"].id == friends_pointer.id:
+                        el["count"] = el["count"]+1
+                        found_flag = True#don't have to add it to list
+                        break
+                if not found_flag:#if we didn't found it we add it to list
+                    pointers.append({"pointer": friends_pointer, "count": 1})
+        #now we have list of pointers
+        sorted_pointers = sorted(pointers, key=lambda k: k['count'])
+        return sorted_pointers
 
 class Pointer(models.Model):
     """Model to represent events"""
@@ -49,6 +64,8 @@ class Pointer(models.Model):
 class MembersManager(models.Manager):
     def create_member(self, user, pointer, is_accepted, is_admin=False):
         """invite someone"""
+        if user in Member.objects.get_memberslist(pointer=pointer):
+            raise ValueError("User is already invited.")
         member = self.create(
             user=user,
             pointer=pointer,
@@ -62,13 +79,6 @@ class MembersManager(models.Manager):
         """returns memberlist for certain pointer"""
         return [i.user for i in Member.objects.filter(pointer=pointer)]
 
-    def get_planned_pointerslist(self, member):
-        """returns list of planned public pointers"""
-        pointers = list()
-        for i in Member.objects.filter(user=member):
-            if not i.pointer.is_private:
-                pointers.append(i.pointer)
-        return pointers
 
 class Member(models.Model):
     """Model to represent a member of event"""

@@ -55,9 +55,10 @@ class TestEvents(TestCase):
                                                 invited_people=[self.user2, self.user3] )
         members = Member.objects.get_memberslist(pointer)
         self.assertEqual(len(members), 3)
-        self.assertTrue(self.user3 in members, True)
-        self.assertTrue(self.user2 in members, True)
-        self.assertTrue(self.user1 in members, True)
+
+        self.assertTrue(self.user3 in members)
+        self.assertTrue(self.user2 in members)
+        self.assertTrue(self.user1 in members)
 
     def test_check_if_creator_is_member(self):
         pointer1 = Pointer.objects.create_pointer(creator=self.user1,
@@ -86,7 +87,7 @@ class TestEvents(TestCase):
                                                 date=datetime.datetime.now() + datetime.timedelta(days=2),
                                                 description="This is a test pointer",
                                                 is_private=False)
-        pointers = Member.objects.get_planned_pointerslist(member=self.user1)
+        pointers = Pointer.objects.get_planned_pointerslist(member=self.user1)
         self.assertEqual(len(pointers), 2)
         self.assertTrue(pointer1 in pointers)
         self.assertTrue(pointer2 in pointers)
@@ -95,13 +96,28 @@ class TestEvents(TestCase):
         self.user2 = User.objects.create_user(username="User2", email="email2")
         Request.objects.send_request(from_user=self.user1, to_user=self.user2)
         Request.objects.filter(from_user=self.user1)[0].accept()
+        self.user3 = User.objects.create_user(username="User3", email="email3")
+        Request.objects.send_request(from_user=self.user1, to_user=self.user3)
+        Request.objects.filter(from_user=self.user1)[0].accept()
 
-        pointer1 = Pointer.objects.create_pointer(creator=self.user1,
-                                                 name='Test pointer',
+        pointer1 = Pointer.objects.create_pointer(creator=self.user2,
+                                                 name='Test pointer2',
                                                  date=datetime.datetime.now() + datetime.timedelta(days=1),
                                                  description="This is a test pointer",
                                                  is_private=False)
+        Member.objects.create_member(user=self.user3,
+                                     pointer=pointer1,
+                                     is_accepted=True)
+        pointer2 = Pointer.objects.create_pointer(creator=self.user3,
+                                                  name='Test pointer3',
+                                                  date=datetime.datetime.now() + datetime.timedelta(days=1),
+                                                  description="This is a test pointer",
+                                                  is_private=False)
+        Member.objects.create_member(user=self.user2,
+                                     pointer=pointer2,
+                                     is_accepted=True)
 
-        pointers = Pointer.objects.get_suggested_pointerlist(user=self.user2)
 
-        self.assertTrue(pointer1 in pointers, True)
+        pointers = Pointer.objects.get_suggested_pointerlist(user=self.user1)
+        print(pointers)
+
