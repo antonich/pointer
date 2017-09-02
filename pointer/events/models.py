@@ -9,7 +9,7 @@ AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 class PointerManager(models.Manager):
     def create_pointer(self, creator, name, date, description, is_private, invited_people=None):
         if date < datetime.datetime.now():
-            raise ValueError
+            raise ValueError("Pointer is out of date")
 
         pointer = self.create(
             name=name,
@@ -18,11 +18,11 @@ class PointerManager(models.Manager):
             is_private=is_private
         )
         #creates admin
-        Member.objects.create_member(user=creator, pointer=pointer, is_accepted=True, is_admin=True)
+        pointer.add_admin(user=creator)
         if is_private:#inviting another people
             if invited_people:
                 for user in invited_people:
-                    Member.objects.create_member(user=user, pointer=pointer, is_accepted=False, is_admin=False)
+                    pointer.invite(user=user)
         pointer.save(using=self._db)
         return pointer
 
@@ -61,6 +61,24 @@ class Pointer(models.Model):
     is_private = models.BooleanField(default=False)
     objects = PointerManager()
 
+    def invite(self, user):#only for private
+        return Member.objects.create_member(user=user, pointer=self, is_accepted=False, is_admin=False)
+
+    def join(self, user):
+        if user in self.get_memberslist():#check if user is already invited
+            Member.objects.get(user=user).accept_membership()
+        else:
+            return Member.objects.create_member(user=user, pointer=self, is_accepted=True, is_admin=False)
+
+    def add_admin(self, user):
+        return Member.objects.create_member(user=user, pointer=self, is_accepted=True, is_admin=True)
+
+    def get_memberslist(self):
+        return Member.objects.get_memberslist(pointer=self)
+
+
+
+
 class MembersManager(models.Manager):
     def create_member(self, user, pointer, is_accepted, is_admin=False):
         """invite someone"""
@@ -75,9 +93,17 @@ class MembersManager(models.Manager):
         member.save(using=self._db)
         return member
 
-    def get_memberslist(self, pointer):
-        """returns memberlist for certain pointer"""
-        return [i.user for i in Member.objects.filter(pointer=pointer)]
+    def get_memberslist(self, pointer, all=False):
+        """returns memberlist of users for certain pointer
+           if all=False only accepted memberships are displayed """
+        if not all:
+            members = list()
+            for i in Member.objects.filter(pointer=pointer):
+                if i.is_accepted:
+                    members.append(i.user)
+            return members
+        else:
+            return [i.user for i in Member.objects.filter(pointer=pointer)]
 
 
 class Member(models.Model):
@@ -98,6 +124,7 @@ class Member(models.Model):
     def accept_membership(self):
         self.is_accepted = True
 
-
+    def get_planned_pointerslist(self):
+        return Pointer.objects.get_planned_pointerslist(member=self)
 
 

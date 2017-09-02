@@ -8,6 +8,7 @@ from friends.models import Request, Friendship
 class TestEvents(TestCase):
     def setUp(self):
         self.user1 = User.objects.create_user(username="User1", email="email1")
+        self.user2 = User.objects.create_user(username="User2", email="email2")
 
 
     def test_creating_of_public_pointer(self):
@@ -25,13 +26,10 @@ class TestEvents(TestCase):
                                                 description="This is a test pointer",
                                                 is_private=False)
 
-        self.user2 = User.objects.create_user(username="User2", email="email2")
-        Member.objects.create_member(user=self.user2, pointer=pointer, is_accepted=True)
-
+        pointer.join(user=self.user2)
         self.assertEqual(Member.objects.all().count(), 2)
 
     def test_creating_private_pointer(self):
-        self.user2 = User.objects.create_user(username="User2", email="email2")
         self.user3 = User.objects.create_user(username="User3", email="email3")
 
         pointer = Pointer.objects.create_pointer(creator=self.user1,
@@ -45,7 +43,6 @@ class TestEvents(TestCase):
         self.assertEqual(Member.objects.all().count(), 3)
 
     def test_get_member_list(self):
-        self.user2 = User.objects.create_user(username="User2", email="email2")
         self.user3 = User.objects.create_user(username="User3", email="email3")
         pointer = Pointer.objects.create_pointer(creator=self.user1,
                                                 name='Test pointer',
@@ -53,7 +50,7 @@ class TestEvents(TestCase):
                                                 description="This is a test pointer",
                                                 is_private=True,
                                                 invited_people=[self.user2, self.user3] )
-        members = Member.objects.get_memberslist(pointer)
+        members = pointer.get_memberslist()
         self.assertEqual(len(members), 3)
 
         self.assertTrue(self.user3 in members)
@@ -93,7 +90,6 @@ class TestEvents(TestCase):
         self.assertTrue(pointer2 in pointers)
 
     def test_get_suggested_pointerlist(self):
-        self.user2 = User.objects.create_user(username="User2", email="email2")
         Request.objects.send_request(from_user=self.user1, to_user=self.user2)
         Request.objects.filter(from_user=self.user1)[0].accept()
         self.user3 = User.objects.create_user(username="User3", email="email3")
@@ -120,4 +116,14 @@ class TestEvents(TestCase):
 
         pointers = Pointer.objects.get_suggested_pointerlist(user=self.user1)
         print(pointers)
+
+    def test_cant_invite_same_user(self):
+        pointer1 = Pointer.objects.create_pointer(creator=self.user1,
+                                                  name='Test pointer1',
+                                                  date=datetime.datetime.now() + datetime.timedelta(days=1),
+                                                  description="This is a test pointer",
+                                                  is_private=False)
+        pointer1.invite(self.user2)
+        with self.assertRaises(ValueError):
+            pointer1.invite(self.user2)
 
