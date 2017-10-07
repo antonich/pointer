@@ -2,11 +2,6 @@ from rest_framework import serializers
 from friends.models import Friendship, Request
 from users.models import User
 
-class PeopleSerializer(serializers.ModelSerializer):
-    """Serialize people"""
-    class Meta:
-        model = User
-        fields = ('id', 'username')
 
 class FriendshipsSerializer(serializers.ModelSerializer):
     """Srialize frienships """

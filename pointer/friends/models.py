@@ -12,10 +12,44 @@ from django.core.exceptions import ObjectDoesNotExist
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
+# request errors
+SAME_USER_ERROR = "The same user."
+ALREADY_FRIENDS_ERROR = "Users are already friends."
+ALREADY_EXISTS_ERROR = "Request already exists."
+
+# friendship errors
+
 # Create your models here.
 
-
 class FriendshipManager(models.Manager):
+    def create_friendship(self, from_user, to_user):
+        '''
+            Creates friendship.
+        '''
+        # checks if request is not send to the same user
+        if from_user == to_user:
+            raise ValidationError(SAME_USER_ERROR)
+
+        fs = []
+        try:
+            fs.append(Friendship.objects.get(Q(from_user=from_user, to_user=to_user) \
+                | Q(from_user=to_user, to_user=from_user)))
+        except:
+            pass
+
+        if fs:
+            raise AlreadyFriendsError(ALREADY_FRIENDS_ERROR)
+
+        friendship = self.model(
+            from_user=from_user,
+            to_user=to_user
+        )
+        friendship.save()
+
+        return friendship
+
+
+
     def get_friendship(self, user1, user2):
         '''
             Returns friendships with the user.
@@ -31,7 +65,7 @@ class FriendshipManager(models.Manager):
 
     def friends_list(self, user):
         '''
-            Returns users who are friends with with user.
+            Returns user's friends list.
         '''
         friendships = Friendship.objects.filter(Q(from_user=user) | Q(to_user=user)).all()
         people = []
@@ -83,7 +117,7 @@ class Friendship(models.Model):
     objects = FriendshipManager()
 
     def __unicode__(self):
-        return "User #%s is friends with #%s" % (self.from_user, self.to_user)
+        return "User #%s and #%s are friends." % (self.from_user, self.to_user)
 
     # def are_friends(self):
     #     if self.from_user in self.friend_list(self.to_user):
@@ -99,24 +133,28 @@ class RequestManager(models.Manager):
         """
         # checks if request is not send to the same user
         if from_user == to_user:
-            raise ValidationError("Users cannot be friends with themselves.")
+            raise ValidationError(SAME_USER_ERROR)
 
         # checks if users arent already friend
         if Friendship.objects.are_friends(from_user, to_user):
-            raise AlreadyFriendsError("Users are already friends.")
+            raise AlreadyFriendsError(ALREADY_FRIENDS_ERROR)
 
         # checks if request hasnt been already sent and reverse one too
         if Request.objects.filter(from_user=from_user, to_user=to_user) or Request.objects.filter(from_user=to_user, to_user=from_user):
-            raise AlreadyExistsError("Request already exists.")
+            raise AlreadyExistsError(ALREADY_EXISTS_ERROR)
 
-        request = Request.objects.create(from_user=from_user, to_user=to_user)
+        # request = Request.objects.create(from_user=from_user, to_user=to_user)
+        request = self.model(
+            from_user=from_user,
+            to_user=to_user
+        )
         request.save()
 
         return request
 
     def remove_request(self, from_user, to_user):
         """
-            Deletes a friendship
+            Deletes a friendship request.
         """
         try:
             request = Request.objects.get(from_user=from_user, to_user=to_user)
@@ -134,7 +172,7 @@ class RequestManager(models.Manager):
         """
         return [ i.from_user for i in Request.objects.filter(to_user=user)]
 
-    def users_sent_request(self, user):
+    def users_sent_requests(self, user):
         """
             Returns a list of people to whom user sent request.
         """
@@ -160,7 +198,7 @@ class Request(models.Model):
 
     def accept(self):
         try:
-            Friendship.objects.create(from_user=self.from_user, \
+            fs = Friendship.objects.create_friendship(from_user=self.from_user, \
                 to_user=self.to_user)
         except:
             raise AlreadyExistsError("Friendship already exists.")

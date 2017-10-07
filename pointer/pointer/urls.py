@@ -8,4 +8,5 @@ urlpatterns = [
     # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api-token-auth/', views.obtain_auth_token),
     url(r'^users/', include('users.urls')),
+    url(r'^friends/', include('friends.urls'))
 ]

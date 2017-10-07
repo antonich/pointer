@@ -1,8 +1,12 @@
 Users:
 - IS_ACTIVE is set when user checks his email;
 - tests: logout though post request to delete token;
--- write sending message view; accepting is already writen;
+-- write sending message view; accepting is already written;
 - write login with facebook profile;
+- for test don't have to be active to login;
+- client.login only for tests; user UserSerializer;
 
 Friends:
-- dont forget to check if reverse request has been sent before sending the request;
+- don't forget to check if reverse request has been sent before sending the request;
+- test friendship_request's date;
+- correct create_friendship check for already friendship existence;
