@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     'users',
     'friends',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'point',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -66,23 +67,23 @@ WSGI_APPLICATION = 'pointer.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'pointer',
-#         'USER': 'postgres',
-#         'PASSWORD': 'antonich',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mydatabase1',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'pointer',
+        'USER': 'postgres',
+        'PASSWORD': 'antonich',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'mydatabase1',
+#     }
+# }
 
 
 # Password validation

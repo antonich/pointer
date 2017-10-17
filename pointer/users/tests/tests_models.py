@@ -18,6 +18,16 @@ class UserTest(TestCase):
 
         self.assertEqual(User.objects.all().filter(email=self.email).count(), 1)
 
+    def test_user_is_deleted(self):
+        u = self.createUser(self.username, self.email, '')
+        u.save()
+
+        self.assertEqual(User.objects.get(username=self.username), u)
+
+        #delete this user
+        u.delete()
+        self.assertEqual(User.objects.all().count(), 0)
+
     def testUserFailsWithoutEmail(self):
         with self.assertRaises(ValueError):
             user = self.createUser(email="", username=self.username, password=self.password)
