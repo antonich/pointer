@@ -1,23 +1,23 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.conf import settings
 
 from users.models import User
 from point.models import Pointer
-from django.conf import settings
+from members.exceptions import *
+from members.choices import *
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
-EMPTY_FIELD = "This field cant be empty."
-ALREADY_EXISTS_ERROR = "Already exists with the same value."
 
 class MemberManager(models.Manager):
     def create_member(self, user, pointer):
         if not user or not pointer:
-            raise ValueError(EMPTY_FIELD)
+            raise EmptyFieldError
 
-        if Member.objects.filter(pointer=pointer):
-            raise ValueError(ALREADY_EXISTS_ERROR)
+        if Member.objects.filter(user=user, pointer=pointer):
+            raise AlreadyExistsError
 
         member = self.model(
             user=user,
@@ -28,15 +28,25 @@ class MemberManager(models.Manager):
 
         return member
 
+    def members_pointer_list(self, user):
+        return [member.pointer for member in Member.objects.filter(user=user)]
+
 class Member(models.Model):
     user = models.ForeignKey(
-        AUTH_USER_MODEL
+        AUTH_USER_MODEL,
+        related_name="member"
     )
     pointer = models.ForeignKey(
-        Pointer
+        Pointer,
+        related_name="event"
+    )
+    status = models.CharField(
+        max_length=7,
+        choices=STATUS_CHOICES,
+        default=WAITING,
     )
 
     objects = MemberManager()
 
-    def __unicode__(self):
-        return "User '%s' for '%s'" % (self.user, self.pointer)
+    class Meta:
+        ordering = ['user']

@@ -12,4 +12,4 @@ Friends:
 - correct create_friendship check for already friendship existence;
 
 -Point:
-	- after pointer is create member is created for this pointer, as an author;
+	- signals creates point group and author member;
