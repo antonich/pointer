@@ -2,6 +2,7 @@ from django.test import TestCase
 
 from point.models import Pointer
 from users.models import User
+from members.models import Member
 
 class TestPointer(TestCase):
     def setUp(self):
@@ -31,3 +32,7 @@ class TestPointer(TestCase):
         with self.assertRaises(ValueError):
             point1 = self.create_pointer()
             point2 = self.create_pointer()
+
+    def test_pointer_signal_sent(self):
+        point = self.create_pointer()
+        self.assertEqual(Member.objects.all().count(), 1)

@@ -1,9 +1,10 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 from users.models import User
-
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
@@ -27,6 +28,7 @@ class PointerManager(models.Manager):
         pointer.save()
 
         return pointer
+
 
 class Pointer(models.Model):
     title = models.CharField(max_length=40, blank=True, default='')

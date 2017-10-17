@@ -10,3 +10,6 @@ Friends:
 - don't forget to check if reverse request has been sent before sending the request;
 - test friendship_request's date;
 - correct create_friendship check for already friendship existence;
+
+-Point:
+	- after pointer is create member is created for this pointer, as an author;
