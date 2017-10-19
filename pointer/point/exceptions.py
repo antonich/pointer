@@ -11,6 +11,9 @@ class PointerIsOutOfDateError(IntegrityError):
 
 class EmptyFieldError(IntegrityError):
     pass
+
+class MemberDoesnotExists(IntegrityError):
+    pass
 #
 #
 # class RequestNotFoundError(IntegrityError):

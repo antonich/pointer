@@ -13,3 +13,6 @@ Friends:
 
 -Point:
 	- signals creates point group and author member;
+
+-Member:
+	- member is created when point on pointer or when accept invitation;

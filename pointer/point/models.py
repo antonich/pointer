@@ -7,6 +7,7 @@ from django.dispatch import receiver
 
 from users.models import User
 from point.exceptions import *
+from members.choices import *
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
@@ -59,6 +60,19 @@ class PublicPointer(Pointer):
 
     objects = PointerManager()
     public_pointer = PublicPointerManager()
+
+    def join(self, user):
+        from members.models import Member
+        Member.objects.create_member(user=user, pointer=self, status=GOING)
+
+    def decline(self, user):
+        from members.models import Member
+        try:
+            member = Member.objects.get(user=user, pointer=self)
+            member.status = DECLINE
+            member.save()
+        except:# DoesNotExist:
+            raise MemberDoesnotExists
 
 
 class PrivatePointerManager(models.Manager):

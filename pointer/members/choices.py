@@ -1,9 +1,9 @@
-POINTED = 'Pointed'
 WAITING = 'Waiting'
 DECLINE = 'Decline'
+GOING = 'Going'
 
 STATUS_CHOICES = (
-    (POINTED, 'Pointed'),
+    (GOING, 'Going'),
     (WAITING, 'Waiting'),
     (DECLINE, 'Decline'),
 )

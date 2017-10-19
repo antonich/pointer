@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 from point.models import Pointer, PublicPointer, PrivatePointer
 from users.models import User
 from members.models import Member
+from members.choices import *
 from point.exceptions import *
 
 class TestPointer(TestCase):
@@ -54,6 +55,26 @@ class TestPublicPointer(TestCase):
     def test_ppoint_is_created_correctly(self):
         point = self.create_ppointer()
         self.assertTrue(PublicPointer.objects.all(), 1)
+
+    def test_join_public_pointer(self):
+        point = self.create_ppointer()
+        point.join(self.user1)
+
+        self.assertEqual(Member.objects.going_members(point)[0], Member.objects.get(user=self.user1, \
+            pointer=point))
+
+    def test_decline_pointer(self):
+        point = self.create_ppointer()
+        point.join(self.user1)
+        point.decline(self.user1)
+
+        self.assertEqual(len(Member.objects.going_members(point)), 0)
+
+    def test_not_member_cant_decline(self):
+        with self.assertRaises(MemberDoesnotExists):
+            point = self.create_ppointer()
+            point.decline(self.user1)
+
 
 class TestPrivatePointer(TestCase):
     def setUp(self):
