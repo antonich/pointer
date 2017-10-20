@@ -30,7 +30,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'members',
-    'point'
+    'point',
+    'invite'
 ]
 
 MIDDLEWARE_CLASSES = [

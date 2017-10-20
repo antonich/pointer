@@ -80,6 +80,8 @@ class TestPrivatePointer(TestCase):
     def setUp(self):
         self.user1 = User.objects.create_user(email='testing@gmail.com', \
             username='testing123')
+        self.user2 = User.objects.create_user(email='test@gmail.com', \
+            username='testing')
 
     def create_prpointer(self):
         return PrivatePointer.objects.create_pointer(author=self.user1, title="party", \
@@ -88,3 +90,6 @@ class TestPrivatePointer(TestCase):
     def test_prpoint_is_created_correctly(self):
         point = self.create_prpointer()
         self.assertTrue(PrivatePointer.objects.all(), 1)
+
+    def test_send_invitation_to_user(self):
+        point = self.create_prpointer()

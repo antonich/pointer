@@ -45,7 +45,7 @@ class Member(models.Model):
     )
     pointer = models.ForeignKey(
         Pointer,
-        related_name="event"
+        related_name="event_for_member"
     )
     status = models.CharField(
         max_length=7,
