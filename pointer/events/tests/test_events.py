@@ -51,6 +51,8 @@ class TestEvents(TestCase):
                                                 is_private=True,
                                                 invited_people=[self.user2, self.user3] )
         members = pointer.get_memberslist()
+        print("members:")
+        print(members)
         self.assertEqual(len(members), 3)
 
         self.assertTrue(self.user3 in members)
@@ -84,7 +86,8 @@ class TestEvents(TestCase):
                                                 date=datetime.datetime.now() + datetime.timedelta(days=2),
                                                 description="This is a test pointer",
                                                 is_private=False)
-        pointers = Pointer.objects.get_planned_pointerslist(member=self.user1)
+        pointers = Pointer.objects.get_planned_pointerslist(user=self.user1)
+        print(pointers)
         self.assertEqual(len(pointers), 2)
         self.assertTrue(pointer1 in pointers)
         self.assertTrue(pointer2 in pointers)
@@ -115,7 +118,6 @@ class TestEvents(TestCase):
 
 
         pointers = Pointer.objects.get_suggested_pointerlist(user=self.user1)
-        print(pointers)
 
     def test_cant_invite_same_user(self):
         pointer1 = Pointer.objects.create_pointer(creator=self.user1,
@@ -126,4 +128,5 @@ class TestEvents(TestCase):
         pointer1.invite(self.user2)
         with self.assertRaises(ValueError):
             pointer1.invite(self.user2)
+
 

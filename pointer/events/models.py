@@ -26,10 +26,10 @@ class PointerManager(models.Manager):
         pointer.save(using=self._db)
         return pointer
 
-    def get_planned_pointerslist(self, member):
+    def get_planned_pointerslist(self, user):
         """returns list of planned public pointers"""
         pointers = list()
-        for i in Member.objects.filter(user=member):
+        for i in Member.objects.filter(user=user):
             if not i.pointer.is_private:
                 pointers.append(i.pointer)
         return pointers
@@ -78,7 +78,6 @@ class Pointer(models.Model):
 
 
 
-
 class MembersManager(models.Manager):
     def create_member(self, user, pointer, is_accepted, is_admin=False):
         """invite someone"""
@@ -93,7 +92,7 @@ class MembersManager(models.Manager):
         member.save(using=self._db)
         return member
 
-    def get_memberslist(self, pointer, all=False):
+    def get_memberslist(self, pointer, all=True):
         """returns memberlist of users for certain pointer
            if all=False only accepted memberships are displayed """
         if not all:
