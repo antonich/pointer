@@ -1,383 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ddfdd643-8334-41bf-908e-745cde8fe1e6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/ach/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/ar/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/be/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/ca/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/ca_ES/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/cs/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/da/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/de/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/el/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/el_GR/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/en/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/en_AU/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/en_CA/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/en_US/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/es/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/et/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/fa/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/fa_IR/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/fi/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/fr/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/fr_CA/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/gl/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/gl_ES/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/he_IL/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/hu/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/id/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/it/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/ja/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/ko_KR/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/mk/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/nb/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/nl/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/nn/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/no/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/pl/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/pt/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/pt_BR/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/pt_PT/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/ro/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/ru/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/sk/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/sv/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/tr/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/tr_TR/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/uk/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/vi/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/zh_CN/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/zh_Hans/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/zh_Hant/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/zh_TW/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/fonts/fontawesome-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/fonts/fontawesome-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/fonts/fontawesome-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/img/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/img/grid.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/img/glyphicons-halflings-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/img/glyphicons-halflings.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/img/grid.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/bin/markdown_py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/Markdown-2.6.8.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/Markdown-2.6.8.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/Markdown-2.6.8.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/Markdown-2.6.8.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/Markdown-2.6.8.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/Markdown-2.6.8.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/Markdown-2.6.8.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/djangorestframework-3.6.2.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/djangorestframework-3.6.2.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/djangorestframework-3.6.2.dist-info/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/djangorestframework-3.6.2.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/djangorestframework-3.6.2.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/djangorestframework-3.6.2.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/djangorestframework-3.6.2.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/djangorestframework-3.6.2.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/__main__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/__version__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/blockparser.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/blockprocessors.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/abbr.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/admonition.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/attr_list.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/codehilite.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/def_list.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/extra.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/fenced_code.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/footnotes.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/headerid.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/meta.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/nl2br.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/sane_lists.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/smart_strong.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/smarty.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/tables.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/toc.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/extensions/wikilinks.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/inlinepatterns.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/odict.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/postprocessors.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/preprocessors.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/serializers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/treeprocessors.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/markdown/util.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/authentication.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/authtoken/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/authtoken/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/authtoken/apps.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/authtoken/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/authtoken/migrations/0002_auto_20160226_1747.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/authtoken/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/authtoken/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/authtoken/serializers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/authtoken/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/compat.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/decorators.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/documentation.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/exceptions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/fields.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/filters.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/generics.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/ach/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/ar/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/be/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/ca/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/ca_ES/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/cs/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/da/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/de/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/el/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/el_GR/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/en/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/en_AU/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/en_CA/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/en_US/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/es/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/et/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/fa/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/fa_IR/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/fi/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/fr/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/fr_CA/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/gl/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/gl_ES/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/he_IL/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/hu/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/id/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/it/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/ja/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/ko_KR/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/mk/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/nb/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/nl/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/nn/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/no/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/pl/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/pt/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/pt_BR/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/pt_PT/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/ro/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/ru/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/sk/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/sv/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/tr/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/tr_TR/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/uk/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/vi/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/zh_CN/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/zh_Hans/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/zh_Hant/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/locale/zh_TW/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/metadata.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/mixins.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/negotiation.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/pagination.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/parsers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/permissions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/relations.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/renderers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/request.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/response.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/reverse.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/routers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/schemas.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/serializers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/settings.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/css/bootstrap-tweaks.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/css/default.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/css/prettify.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/css/base.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/css/bootstrap-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/css/font-awesome-4.0.3.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/css/highlight.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/css/jquery.json-view.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/fonts/fontawesome-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/js/api.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/js/base.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/js/highlight.pack.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/js/jquery-1.10.2.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/docs/js/jquery.json-view.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/js/ajax-form.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/js/coreapi-0.1.0.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/js/csrf.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/js/default.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/js/jquery-1.12.4.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/static/rest_framework/js/prettify-min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/status.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/admin.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/admin/detail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/admin/dict_value.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/admin/list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/admin/list_value.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/admin/simple_list_value.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/api.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/base.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/docs/auth/basic.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/docs/auth/session.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/docs/auth/token.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/docs/document.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/docs/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/docs/interact.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/docs/langs/javascript-intro.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/docs/langs/javascript.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/docs/langs/python-intro.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/docs/langs/python.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/docs/langs/shell-intro.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/docs/langs/shell.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/docs/link.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/docs/sidebar.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/filters/base.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/filters/django_filter.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/filters/django_filter_crispyforms.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/filters/ordering.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/filters/search.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/horizontal/checkbox.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/horizontal/checkbox_multiple.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/horizontal/fieldset.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/horizontal/form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/horizontal/input.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/horizontal/list_fieldset.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/horizontal/radio.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/horizontal/select.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/horizontal/select_multiple.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/horizontal/textarea.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/inline/checkbox.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/inline/checkbox_multiple.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/inline/fieldset.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/inline/form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/inline/input.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/inline/list_fieldset.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/inline/radio.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/inline/select.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/inline/select_multiple.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/inline/textarea.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/login.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/login_base.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/pagination/numbers.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/pagination/previous_and_next.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/raw_data_form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/schema.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/vertical/checkbox.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/vertical/checkbox_multiple.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/vertical/fieldset.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/vertical/form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/vertical/input.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/vertical/list_fieldset.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/vertical/radio.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/vertical/select.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/vertical/select_multiple.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templates/rest_framework/vertical/textarea.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templatetags/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/templatetags/rest_framework.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/test.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/throttling.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/urlpatterns.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/utils/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/utils/breadcrumbs.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/utils/encoders.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/utils/field_mapping.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/utils/formatting.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/utils/html.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/utils/humanize_datetime.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/utils/mediatypes.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/utils/model_meta.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/utils/representation.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/utils/serializer_helpers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/utils/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/validators.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/versioning.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/env/lib/python2.7/site-packages/rest_framework/viewsets.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/friends/exceptions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/friends/migrations/0002_auto_20171020_1724.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/friends/serializers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/friends/tests/tests_models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/friends/tests/tests_views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/friends/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/invite/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/invite/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/invite/apps.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/invite/exceptions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/invite/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/invite/migrations/0002_invite_to_user.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/invite/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/invite/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/invite/tests/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/invite/tests/test_models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/invite/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/members/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/members/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/members/apps.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/members/choices.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/members/exceptions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/members/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/members/migrations/0002_member_user.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/members/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/members/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/members/signals.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/members/tests/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/members/tests/test_models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/members/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/point/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/point/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/point/apps.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/point/exceptions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/point/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/point/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/point/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/point/signals.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/point/tests/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/point/tests/tests_models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/point/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/set.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/users/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/users/serializers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/users/tests/test_serializers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/users/tests/test_user.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/users/tests/test_views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pointer/users/urls.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pointer/friends/migrations/0002_auto_20170706_1650.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pointer/friends/migrations/0003_auto_20170707_1847.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pointer/friends/tests/tests_friends.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pointer/users/migrations/0002_auto_20170706_1650.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pointer/MyDataBase" afterPath="$PROJECT_DIR$/pointer/MyDataBase" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/env/pip-selfcheck.json" afterPath="$PROJECT_DIR$/env/pip-selfcheck.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pointer/friends/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/pointer/friends/migrations/0001_initial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pointer/friends/models.py" afterPath="$PROJECT_DIR$/pointer/friends/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pointer/friends/views.py" afterPath="$PROJECT_DIR$/pointer/friends/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pointer/pointer/settings.py" afterPath="$PROJECT_DIR$/pointer/pointer/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pointer/pointer/urls.py" afterPath="$PROJECT_DIR$/pointer/pointer/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pointer/users/admin.py" afterPath="$PROJECT_DIR$/pointer/users/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pointer/users/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/pointer/users/migrations/0001_initial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pointer/users/models.py" afterPath="$PROJECT_DIR$/pointer/users/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pointer/users/tests/tests_forms.py" afterPath="$PROJECT_DIR$/pointer/users/tests/tests_forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pointer/users/tests/tests_models.py" afterPath="$PROJECT_DIR$/pointer/users/tests/tests_models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pointer/users/views.py" afterPath="$PROJECT_DIR$/pointer/users/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
-    </list>
+    <list default="true" id="ddfdd643-8334-41bf-908e-745cde8fe1e6" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -403,8 +27,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pointer/friends/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="280">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -415,8 +39,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pointer/pointer/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="964">
-              <caret line="106" column="12" lean-forward="true" selection-start-line="106" selection-start-column="12" selection-end-line="106" selection-end-column="12" />
+            <state relative-caret-position="2120">
+              <caret line="106" column="12" lean-forward="false" selection-start-line="106" selection-start-column="12" selection-end-line="106" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -425,8 +49,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pointer/users/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="1160">
+              <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
               <folding>
                 <element signature="e#0#90#0" expanded="true" />
               </folding>
@@ -449,8 +73,8 @@
       <file leaf-file-name="tests_models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pointer/users/tests/tests_models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state relative-caret-position="361">
+              <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -543,9 +167,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="-4" />
-    <option name="width" value="1366" />
-    <option name="height" value="772" />
+    <option name="x" value="-1" />
+    <option name="y" value="-11" />
+    <option name="width" value="1368" />
+    <option name="height" value="780" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -601,107 +226,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pointer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pointer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pointer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="members" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pointer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pointer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pointer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="members" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="migrations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pointer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pointer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pointer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="invite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pointer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pointer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pointer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="invite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="migrations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pointer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pointer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pointer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="friends" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Changed Files">
           <PATH>
@@ -730,6 +256,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1048,18 +575,18 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-4" width="1366" height="772" extended-state="6" />
+    <frame x="-1" y="-11" width="1368" height="780" extended-state="6" />
+    <editor active="true" />
     <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29136163" sideWeight="0.79634464" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.023916293" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31390134" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31390134" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38116592" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29136163" sideWeight="0.79634464" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="manage.py@pointer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.264574" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38116592" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66983896" sideWeight="0.20365535" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1070,6 +597,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="manage.py@pointer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.264574" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1203,14 +731,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pointer/friends/tests/tests_friends.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pointer/friends/tests/tests_friends.py" />
     <entry file="file://$PROJECT_DIR$/pointer/friends/tests/test_friendshipManager.py" />
     <entry file="file://$PROJECT_DIR$/pointer/friends/tests/test_friendship.py" />
     <entry file="file://$PROJECT_DIR$/pointer/friends/test_friendshipManager.py" />
@@ -1272,7 +793,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="261" column="0" lean-forward="false" selection-start-line="261" selection-start-column="0" selection-end-line="261" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1361,8 +881,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pointer/users/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state relative-caret-position="1160">
+          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding>
             <element signature="e#0#90#0" expanded="true" />
           </folding>
@@ -1371,50 +891,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pointer/friends/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="280">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pointer/friends/migrations/0003_auto_20170707_1847.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-24">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pointer/friends/migrations/0002_auto_20171010_1257.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pointer/friends/migrations/0003_auto_20170707_1847.py" />
+    <entry file="file://$PROJECT_DIR$/pointer/friends/migrations/0002_auto_20171010_1257.py" />
     <entry file="file://$PROJECT_DIR$/pointer/pointer/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="964">
-          <caret line="106" column="12" lean-forward="true" selection-start-line="106" selection-start-column="12" selection-end-line="106" selection-end-column="12" />
+        <state relative-caret-position="2120">
+          <caret line="106" column="12" lean-forward="false" selection-start-line="106" selection-start-column="12" selection-end-line="106" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pointer/friends/tests/tests_friends.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="73" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pointer/friends/tests/tests_friends.py" />
     <entry file="file://$PROJECT_DIR$/pointer/users/tests/tests_models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state relative-caret-position="361">
+          <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding />
         </state>
       </provider>
