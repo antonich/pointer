@@ -29,14 +29,14 @@ class MemberManager(models.Manager):
 
         return member
 
-    def members_pointer_list(self, user):
-        return [member.pointer for member in Member.objects.filter(user=user)]
-
     def going_members(self, pointer):
         return Member.objects.filter(pointer=pointer, status=GOING)
 
     def decline_members(self, pointer):
         return Member.objects.filter(pointer=pointer, status=DECLINE)
+
+    def users_pointer_list(self, user):
+        return Member.objects.filter(user=user).exclude(status=DECLINE)
 
 class Member(models.Model):
     user = models.ForeignKey(

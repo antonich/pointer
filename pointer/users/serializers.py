@@ -9,7 +9,9 @@ from .models import User
 VALIDATION_ERROR = 'User is not defined.'
 
 class UserSerializer(serializers.ModelSerializer):
-    """Serializer people"""
+    """
+        Serializer people.
+    """
     class Meta:
         model = User
         fields = ('id', 'username')

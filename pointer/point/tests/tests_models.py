@@ -8,6 +8,7 @@ from users.models import User
 from members.models import Member
 from members.choices import *
 from point.exceptions import *
+from invite.models import Invite
 
 class TestPointer(TestCase):
     def setUp(self):
@@ -93,3 +94,14 @@ class TestPrivatePointer(TestCase):
 
     def test_send_invitation_to_user(self):
         point = self.create_prpointer()
+
+        invite = point.send_invitation(self.user1)
+        self.assertEqual(invite, Invite.objects.get(to_user=self.user1, pointer=point))
+        self.assertEqual(len(point.waiting_members()), 1)
+
+    def test_invite_creates_user_with_status_waiting(self):
+        point = self.create_prpointer()
+
+        invite = point.send_invitation(self.user1)
+        self.assertEqual(Member.objects.get(user=self.user1, pointer=point).status, \
+            WAITING)

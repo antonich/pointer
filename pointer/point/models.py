@@ -76,8 +76,7 @@ class PublicPointer(Pointer):
 
 
 class PrivatePointerManager(models.Manager):
-    def send_invitation(self):
-        pass
+    pass
 
 class PrivatePointer(Pointer):
     is_private = models.BooleanField(default=True)
@@ -85,3 +84,19 @@ class PrivatePointer(Pointer):
 
     objects = PointerManager()
     private_pointer = PrivatePointerManager()
+
+    def send_invitation(self, user):
+        from invite.models import Invite
+        return Invite.objects.create_invite(user, self)
+
+    def waiting_members(self):
+        from members.models import Member
+        return Member.objects.filter(pointer=self, status=WAITING)
+
+    def decline_members(self):
+        from members.models import Member
+        return Member.objects.filter(pointer=self, status=DECLINE)
+
+    def going_members(self):
+        from members.models import Member
+        return Member.objects.filter(pointer=self, status=GOING)

@@ -7,6 +7,8 @@ from invite.models import Invite
 from users.models import User
 from point.models import PrivatePointer
 from invite.exceptions import *
+from members.models import Member
+from members.choices import *
 
 class TestInvite(TestCase):
     def setUp(self):
@@ -21,8 +23,25 @@ class TestInvite(TestCase):
         self.assertEqual(Invite.objects.all().count(), 1)
 
     def test_creating_the_same_invite(self):
-        with self.assertRaises(AlreadyExistsError):
-            invite1 = Invite.objects.create_invite(self.user1, self.point)
+        invite1 = Invite.objects.create_invite(self.user1, self.point)
+        with self.assertRaises(InviteAlreadyExistsError):
             invite2 = Invite.objects.create_invite(self.user1, self.point)
 
-    
+    def test_after_invite_member_is_created(self):
+        invite = Invite.objects.create_invite(self.user1, self.point)
+
+        self.assertEqual(Member.objects.get(user=self.user1, pointer=self.point).status, WAITING)
+
+    def test_accept_invite(self):
+        invite = Invite.objects.create_invite(self.user1, self.point)
+        invite.accept()
+        self.assertEqual(len(self.point.going_members()), 1)
+        # invite is deleted
+        self.assertEqual(Invite.objects.all().count(), 0)
+
+    def test_decline_invite(self):
+        invite = Invite.objects.create_invite(self.user1, self.point)
+        invite.decline()
+        self.assertEqual(len(self.point.decline_members()), 1)
+        # invite is deleted
+        self.assertEqual(Invite.objects.all().count(), 0)

@@ -4,8 +4,11 @@ from django.db import models
 from django.utils import timezone
 
 from users.models import User
-from point.models import Pointer
+from point.models import Pointer, PrivatePointer
 from invite.exceptions import *
+from members.models import Member
+from members.exceptions import *
+from members.choices import *
 
 class InviteManager(models.Manager):
     def create_invite(self, user, pointer):
@@ -13,8 +16,7 @@ class InviteManager(models.Manager):
             raise EmptyFieldError
 
         if Invite.objects.filter(to_user=user, pointer=pointer):
-            raise AlreadyExistsError
-
+            raise InviteAlreadyExistsError
 
         invitation = self.model(
             to_user=user,
@@ -45,3 +47,27 @@ class Invite(models.Model):
 
     def __unicode__(self):
         return "Invitation to %s pointer %s" % (self.to_user, self.pointer)
+
+    def accept(self):
+        try:
+            member = Member.objects.get(user=self.to_user, \
+                pointer=self.pointer)
+        except:
+            raise MemberDoesnotExists
+
+        member.status = GOING
+        member.save()
+
+        self.delete()
+
+    def decline(self):
+        try:
+            member = Member.objects.get(user=self.to_user, \
+                pointer=self.pointer)
+        except:
+            raise MemberDoesnotExists
+
+        member.status = DECLINE
+        member.save()
+
+        self.delete()

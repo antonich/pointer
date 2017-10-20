@@ -1,7 +1,7 @@
 from django.db import IntegrityError
 
 
-class AlreadyExistsError(IntegrityError):
+class InviteAlreadyExistsError(IntegrityError):
     pass
 
 

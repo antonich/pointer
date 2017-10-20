@@ -24,6 +24,11 @@ class TestMember(TestCase):
         # with the author
         self.assertEqual(Member.objects.filter(pointer=self.point).count(), 2)
 
+    def test_create_member_with_more_pointers_fails(self):
+        member = Member.objects.create_member(user=self.user1, pointer=self.point)
+        with self.assertRaises(AlreadyExistsError):
+            member1 = Member.objects.create_member(user=self.user1, pointer=self.point)
+
     def test_create_member_for_pointer_twice(self):
         member1 = Member.objects.create_member(user=self.user1, pointer=self.point)
         with self.assertRaises(AlreadyExistsError):
@@ -46,4 +51,4 @@ class TestMember(TestCase):
         member1 = Member.objects.create_member(user=self.user1, pointer=self.point)
         member2 = Member.objects.create_member(user=self.user1, pointer=point1)
 
-        self.assertEqual(len(Member.objects.members_pointer_list(self.user1)), 2)
+        self.assertEqual(len(Member.objects.users_pointer_list(self.user1)), 2)
