@@ -1,8 +1,6 @@
 from django.test import TestCase
-from django.utils.html import escape
-from django.contrib.auth.models import *
 from django.core.exceptions import ValidationError
-from django.db.models import Q
+from django.db import IntegrityError
 
 from users.models import User
 
@@ -21,6 +19,16 @@ class UserTest(TestCase):
 
         self.assertEqual(User.objects.all().filter(email=self.email).count(), 1)
 
+    def test_user_is_deleted(self):
+        u = self.createUser(self.username, self.email, '')
+        u.save()
+
+        self.assertEqual(User.objects.get(username=self.username), u)
+
+        #delete this user
+        u.delete()
+        self.assertEqual(User.objects.all().count(), 0)
+
     def testUserFailsWithoutEmail(self):
         with self.assertRaises(ValueError):
             self.createUser(email="", username=self.username, password=self.password)
@@ -34,3 +42,18 @@ class UserTest(TestCase):
             user = self.createUser(email=self.email, username=self.username, password=self.password, desc='sandoiasndoia\
                 sdofndsonfodsinfosidnfosdnfodnsoifnwoifnpwemf-wejf-wefnw-eofnweoinfoiwenfoiwenoifnweoifnwoeifoiwnefoinwoifnw')
 
+    ''' Not necessary '''
+    def testUserWithAlreadyUsedEmailOrUsername(self):
+        user = self.createUser(self.username, self.email, self.password)
+        # Checks if user is in use with used username or email
+        with self.assertRaises(ValidationError):
+            User.objects.is_already_in_use(self.email, self.username)
+
+    def testUserWithAlreadyUsedEmailOrUsernameWithoutUserObject(self):
+        user = self.createUser(self.username, self.email, self.password)
+
+        try:
+            user1 = self.createUser(self.username, self.email, self.password)
+            user1.save()
+        except IntegrityError:
+            pass

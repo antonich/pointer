@@ -1,13 +1,27 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from django.conf import settings
-from django.core.exceptions import ValidationError
-from django.db.models import Q
+from django.core.exceptions import ValidationError, ObjectDoesNotExist
+from django.db import IntegrityError
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+from rest_framework.authtoken.models import Token
+
+import random, string
+
+NO_TOKEN = "This user doesn't have token."
 
 '''
     Manager for user below
     Test are in tests/test_models.py
 '''
+
+def generate_entry():
+    """Generate a random alphanumeric string between 8 and 16 characters long."""
+    return ''.join(random.choice(string.ascii_lowercase + string.digits) for x in range(random.randint(8,16)))
+
 class UserManager(BaseUserManager):
 
     def create_user(self, username, email, description='', name='', password=None):
@@ -27,7 +41,8 @@ class UserManager(BaseUserManager):
             username = username,
             email = self.normalize_email(email),
             name = name,
-            description = description
+            description = description,
+            activation_key = generate_entry()
         )
 
         user.set_password(password)
@@ -42,6 +57,18 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+    def get_user_token(self, user):
+        try:
+            return Token.objects.get(user=user)
+        except:
+            raise ValidationError(NO_TOKEN)
+
+    def is_already_in_use(self, email, username):
+        try:
+            user = self.create_user(email=email, username=username)
+            return 0
+        except IntegrityError: # Error for already in use email or username
+            raise ValidationError('This user is already in user')
 
 '''
     Model to represent User
@@ -55,6 +82,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=130, blank=True, default='')
     description = models.CharField(max_length=100, blank=True, default='')
     #avatar = models.ImageField(upload_to='images')
+    activation_key = models.CharField(max_length=17, unique=True)
+
 
     objects = UserManager()
 
@@ -74,7 +103,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.is_superuser
 
     def __unicode__(self):
-        return self.email
+        return self.username
 
     ''' Add mail send !!! '''
     # def email_user(self, subject, message, from_email=None, **kwargs):
