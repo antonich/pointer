@@ -37,12 +37,13 @@ class Pointer(models.Model):
     title = models.CharField(max_length=40, blank=True, default='')
     description = models.CharField(max_length=100, blank=True, default='')
     author = models.ForeignKey(
-        AUTH_USER_MODEL
+        AUTH_USER_MODEL,
+        related_name='user'
     )
     date_created = models.DateTimeField(default=timezone.now)
     pointer_date = models.DateTimeField(default=timezone.now)
 
-    REQUIRED_FIELDS = ['title', 'author', 'date_created', 'pointer_date']
+    # REQUIRED_FIELDS = ['title', 'author', 'date_created', 'pointer_date']
 
     objects = PointerManager()
 

@@ -36,7 +36,8 @@ class MemberManager(models.Manager):
         return Member.objects.filter(pointer=pointer, status=DECLINE)
 
     def users_pointer_list(self, user):
-        return Member.objects.filter(user=user).exclude(status=DECLINE)
+        return [member.pointer for member in  \
+            Member.objects.filter(user=user).exclude(status=DECLINE) ]
 
 class Member(models.Model):
     user = models.ForeignKey(

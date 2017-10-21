@@ -13,6 +13,7 @@ Friends:
 
 -Point:
 	- signals creates point group and author member;
+	- SERIALIZERS: pointer list with many=True to pass;
 
 -Member:
 	- member is created when point on pointer or when accept invitation;
