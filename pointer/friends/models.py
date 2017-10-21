@@ -6,6 +6,7 @@ from django.db import models
 from django.conf import settings
 from django.db.models import Q
 from django.utils import timezone
+
 from friends.exceptions import *
 from users.models import User
 from django.core.exceptions import ObjectDoesNotExist
@@ -20,6 +21,7 @@ ALREADY_EXISTS_ERROR = "Request already exists."
 # friendship errors
 
 # Create your models here.
+
 
 class FriendshipManager(models.Manager):
     def create_friendship(self, from_user, to_user):
@@ -76,6 +78,7 @@ class FriendshipManager(models.Manager):
                 people.append(fs.from_user)
         return people
 
+
     def remove_friendship(self, from_user, to_user):
         """
             Deletes a friendship.
@@ -117,13 +120,7 @@ class Friendship(models.Model):
     objects = FriendshipManager()
 
     def __unicode__(self):
-        return "User #%s and #%s are friends." % (self.from_user, self.to_user)
-
-    # def are_friends(self):
-    #     if self.from_user in self.friend_list(self.to_user):
-    #         return True
-    #     else:
-    #         return False
+        return "User #%s is friends with #%s" % (self.from_user, self.to_user)
 
 
 class RequestManager(models.Manager):
@@ -194,6 +191,7 @@ class Request(models.Model):
     )
     created = models.DateTimeField(default=timezone.now)
 
+
     objects = RequestManager()
 
     def accept(self):
@@ -206,6 +204,7 @@ class Request(models.Model):
 
     def decline(self):
         self.delete()
+
 
     def __unicode__(self):
         return "@%s request to @%s" % (self.from_user, self.to_user)

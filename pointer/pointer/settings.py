@@ -31,7 +31,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'members',
     'point',
-    'invite'
+    'invite',
+    'group'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -71,21 +72,11 @@ WSGI_APPLICATION = 'pointer.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pointer',
-        'USER': 'postgres',
-        'PASSWORD': 'antonich',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'MyDataBase'),
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'mydatabase1',
-#     }
-# }
 
 
 # Password validation
@@ -136,3 +127,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+

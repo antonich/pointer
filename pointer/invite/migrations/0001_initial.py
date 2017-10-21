@@ -23,7 +23,6 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('date', models.DateTimeField()),
                 ('pointer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='event_for_invite', to='point.Pointer')),
-                ('to_user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='invite_user', to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'ordering': ['pointer'],

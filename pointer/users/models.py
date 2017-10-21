@@ -46,7 +46,7 @@ class UserManager(BaseUserManager):
         )
 
         user.set_password(password)
-        user.save(using = self._db)
+        user.save(using=self._db)
         return user
 
     def create_superuser(self, username, email, password='', description='', name=''):
@@ -54,7 +54,7 @@ class UserManager(BaseUserManager):
         user.is_active = True
         user.is_admin = True
         user.is_superuser = True
-        user.save(using = self._db)
+        user.save(using=self._db)
         return user
 
     def get_user_token(self, user):
@@ -76,11 +76,14 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=100, unique=True)
     username = models.CharField(max_length=40, unique=True)
-    name = models.CharField(max_length=130, blank=True, default='')
-    description = models.CharField(max_length=100, blank=True, default='')
     is_active = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
+    #Editable stuff
+    name = models.CharField(max_length=130, blank=True, default='')
+    description = models.CharField(max_length=100, blank=True, default='')
+    #avatar = models.ImageField(upload_to='images')
     activation_key = models.CharField(max_length=17, unique=True)
+
 
     objects = UserManager()
 
@@ -110,3 +113,4 @@ class User(AbstractBaseUser, PermissionsMixin):
     @property
     def is_staff(self):
         return self.is_admin
+
