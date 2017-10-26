@@ -12,7 +12,6 @@ class UserCreationSerializerTest(TestCase):
         self.data = self.set_data()
         serial = UserCreationSerializer(data=self.data)
         self.assertTrue(serial.is_valid())
-
         serial.save()
         self.assertEqual(User.objects.all().filter(username=self.data['username']).count(), 1)
 

@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 from users.models import User
 from point.models import Pointer
-from point.serializers import PointerSerializer
+from point.serializers import PointerSerializer, PointerCreationSerializer
 
 class TestPointerSerializer(TestCase):
     def setUp(self):
@@ -23,4 +23,15 @@ class TestPointerSerializer(TestCase):
         self.assertEqual(serializer.data[0]['title'], self.point.title)
 
 class TestPointerCreation(TestCase):
-    pass
+    def setUp(self):
+        self.user1 = User.objects.create_user(username="User1", \
+            password="password123", email="email1@gmail.com")
+
+    def set_data(self, author, title='party', desc='party hard'):
+        return {'author': author.pk, 'title': title, 'desc': desc, 'pdate': datetime.now(timezone.utc)+timedelta(days=1)}
+
+    def test_create_pointer(self):
+        data = self.set_data(self.user1)
+        point = PointerSerializer(data=data)
+        point.is_valid()
+        print point.data['']
