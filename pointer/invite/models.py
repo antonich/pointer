@@ -9,6 +9,7 @@ from invite.exceptions import *
 from members.models import Member
 from members.exceptions import *
 from members.choices import *
+from friends.models import Friendship
 
 class InviteManager(models.Manager):
     def create_invite(self, user, pointer):
@@ -17,6 +18,9 @@ class InviteManager(models.Manager):
 
         if Invite.objects.filter(to_user=user, pointer=pointer):
             raise InviteAlreadyExistsError
+
+        if not Friendship.objects.are_friends(pointer.author, user):
+            raise InviteOnlyFriendsError
 
         invitation = self.model(
             to_user=user,
