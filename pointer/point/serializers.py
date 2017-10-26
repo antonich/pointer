@@ -9,20 +9,11 @@ class PointerSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def create(self, validated_data):
-        pointer = Pointer.objects.create(
-            title=validated_data['description'],
-            desc=validated_data['email'],
+        print validated_data
+        point = Pointer.objects.create_pointer(
             author=validated_data['author'],
-            pdate=validated_data['pdate']
+            desc=validated_data['description'],
+            title=validated_data['title'],
+            pdate=validated_data['pointer_date']
         )
-
-        return pointer
-
-class PointerCreationSerializer(serializers.ModelSerializer):
-    """
-        Pointer creating serializer.
-    """
-    class Meta:
-        model = Pointer
-        fields = '__all__'
-        read_only_fields = ('id',)
+        return point

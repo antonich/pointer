@@ -29,7 +29,6 @@ class UserCreationSerializer(serializers.ModelSerializer):
             email=validated_data['email'],
             name=validated_data['name']
         )
-
         return user
 
     # def sendEmail(self, datas):
