@@ -1,0 +1,8 @@
+- invite serializers with tests;
+- members serializers with tests;
+- members views;
+- point views;
+- invite views;
+- facebook login sys;
+- facebook api for friends;
+- user is private;
