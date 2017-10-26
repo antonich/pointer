@@ -7,3 +7,6 @@ class InviteAlreadyExistsError(IntegrityError):
 
 class EmptyFieldError(IntegrityError):
     pass
+
+class InviteOnlyFriendsError(IntegrityError):
+    pass

@@ -9,13 +9,18 @@ from point.models import PrivatePointer
 from invite.exceptions import *
 from members.models import Member
 from members.choices import *
+from friends.models import Friendship
 
 class TestInvite(TestCase):
     def setUp(self):
         self.user1 = User.objects.create_user(email='testing@gmail.com', \
             username='testing123')
-        self.point = PrivatePointer.objects.create_pointer(author=self.user1, title="party hard", \
+        self.user2 = User.objects.create_user(email='testing123@gmail.com', \
+            username='testing')
+        self.point = PrivatePointer.objects.create_pointer(author=self.user2, title="party hard", \
             desc="we are partying hard today", pdate=datetime.now(timezone.utc)+timedelta(days=1))
+
+        Friendship.objects.create_friendship(self.user1, self.user2)
 
     def test_creating_invite(self):
         invite = Invite.objects.create_invite(self.user1, self.point)
@@ -35,7 +40,7 @@ class TestInvite(TestCase):
     def test_accept_invite(self):
         invite = Invite.objects.create_invite(self.user1, self.point)
         invite.accept()
-        self.assertEqual(len(self.point.going_members()), 1)
+        self.assertEqual(len(self.point.going_members()), 2)
         # invite is deleted
         self.assertEqual(Invite.objects.all().count(), 0)
 

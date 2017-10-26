@@ -28,7 +28,7 @@ class MemberManager(models.Manager):
         member.save()
 
         return member
-
+    
     def going_members(self, pointer):
         return Member.objects.filter(pointer=pointer, status=GOING)
 
