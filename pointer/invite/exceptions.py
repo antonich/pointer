@@ -10,3 +10,6 @@ class EmptyFieldError(IntegrityError):
 
 class InviteOnlyFriendsError(IntegrityError):
     pass
+
+class AlreadyMemberOfThisPointer(IntegrityError):
+    pass

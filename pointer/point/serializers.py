@@ -9,7 +9,6 @@ class PointerSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def create(self, validated_data):
-        print validated_data
         point = Pointer.objects.create_pointer(
             author=validated_data['author'],
             desc=validated_data['description'],

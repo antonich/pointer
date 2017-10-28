@@ -50,3 +50,13 @@ class TestInvite(TestCase):
         self.assertEqual(len(self.point.decline_members()), 1)
         # invite is deleted
         self.assertEqual(Invite.objects.all().count(), 0)
+
+    def test_cant_invite_author(self):
+        with self.assertRaises(InviteOnlyFriendsError):
+            invite = Invite.objects.create_invite(self.user2, self.point)
+
+    def test_cant_invite_member(self):
+        invite = Invite.objects.create_invite(self.user1, self.point)
+        invite.accept()
+        with self.assertRaises(AlreadyMemberOfThisPointer):
+            invite = Invite.objects.create_invite(self.user1, self.point)

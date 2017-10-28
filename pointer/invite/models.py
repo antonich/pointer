@@ -22,6 +22,9 @@ class InviteManager(models.Manager):
         if not Friendship.objects.are_friends(pointer.author, user):
             raise InviteOnlyFriendsError
 
+        if Member.objects.filter(user=user, pointer=pointer):
+            raise AlreadyMemberOfThisPointer
+
         invitation = self.model(
             to_user=user,
             pointer=pointer,
@@ -42,7 +45,7 @@ class Invite(models.Model):
         Pointer,
         related_name='event_for_invite'
     )
-    date = models.DateTimeField()
+    date = models.DateTimeField(default=timezone.now())
 
     objects = InviteManager()
 
