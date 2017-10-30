@@ -11,6 +11,7 @@ from members.choices import *
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
+
 class PointerManager(models.Manager):
     def create_pointer(self, author=None, title='', desc='', dcreated=timezone.now(), pdate=timezone.now()):
         if not title or not author or not desc:
@@ -27,6 +28,11 @@ class PointerManager(models.Manager):
             description=desc,
             author=author
         )
+
+        #adding author to its pointer
+        #from members.models import Member
+        #Member.objects.create_member(user=author, pointer=self)
+
 
         pointer.save()
 
@@ -53,8 +59,10 @@ class Pointer(models.Model):
     def __unicode__(self):
         return "Pointer %s" % (self.title)
 
+
 class PublicPointerManager(models.Manager):
     pass
+
 
 class PublicPointer(Pointer):
     is_private = models.BooleanField(default=False)
@@ -78,6 +86,7 @@ class PublicPointer(Pointer):
 
 class PrivatePointerManager(models.Manager):
     pass
+
 
 class PrivatePointer(Pointer):
     is_private = models.BooleanField(default=True)

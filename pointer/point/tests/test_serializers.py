@@ -34,4 +34,4 @@ class TestPointerCreation(TestCase):
         data = self.set_data(self.user1)
         point = PointerSerializer(data=data)
         point.is_valid()
-        print point.data['']
+        # print point.data['']
