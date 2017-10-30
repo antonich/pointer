@@ -32,4 +32,7 @@ class TestPointerCreation(TestCase):
         point = Pointer.objects.create_pointer(author=user1, title='party', \
             desc='party hard', pdate=datetime.now(timezone.utc)+timedelta(days=1))
         Friendship.objects.create_friendship(user1, user2)
-        # invite = InviteSerializer(data={'pointer': })
+        invite = InviteSerializer(data={'to_user': user2.pk, 'pointer': point.pk})
+        invite.is_valid()
+        invite.save()
+        self.assertEqual(Invite.objects.all().count(), 1)

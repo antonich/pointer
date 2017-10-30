@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
 from point.models import Pointer
-from members.serializers import MemberSerializer
 
 class PointerSerializer(serializers.ModelSerializer):
     class Meta:

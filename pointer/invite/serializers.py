@@ -9,7 +9,7 @@ class InviteSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         invite = Invite.objects.create_invite(
-            user=validated_data['user'],
+            user=validated_data['to_user'],
             pointer=validated_data['pointer'],
         )
-        return point
+        return invite
