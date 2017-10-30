@@ -10,20 +10,14 @@ from point.models import Pointer
 from point.serializers import PointerSerializer
 from members.models import Member
 
-class PointerList(APIView):
+class AuthorPointerList(APIView):
     """
-        List user's pointer list.
+        Author pointer list.
     """
     permission_classes = (IsAuthenticated,)
     #authentication_classes = (TokenAuthentication, )
 
-    def get_object(self, user):
-        try:
-            return Member.objects.users_pointer_list(user)
-        except Pointer.DoesNotExist:
-            raise Http404
-
     def get(self, request, format=None):
-        pointer_list = self.get_object(request.user)
+        pointer_list = Pointer.objects.author_pointer_list(request.user)
         serializer = PointerSerializer(pointer_list, many=True)
         return Response(serializer.data)

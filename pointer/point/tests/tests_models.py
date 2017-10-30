@@ -113,7 +113,7 @@ class TestPrivatePointer(TestCase):
 
         invite = point.send_invitation(self.user2)
         self.assertEqual(invite, Invite.objects.get(to_user=self.user2, pointer=point))
-        self.assertEqual(len(point.waiting_members()), 1)
+        self.assertEqual(len(Member.objects.waiting_members(point)), 1)
 
     def test_invite_creates_user_with_status_waiting(self):
         point = self.create_prpointer()

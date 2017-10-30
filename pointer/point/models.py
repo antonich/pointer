@@ -29,14 +29,12 @@ class PointerManager(models.Manager):
             author=author
         )
 
-        #adding author to its pointer
-        #from members.models import Member
-        #Member.objects.create_member(user=author, pointer=self)
-
-
         pointer.save()
 
         return pointer
+
+    def author_pointer_list(self, auth):
+        return Pointer.objects.filter(author=auth)
 
 
 class Pointer(models.Model):
@@ -98,15 +96,3 @@ class PrivatePointer(Pointer):
     def send_invitation(self, user):
         from invite.models import Invite
         return Invite.objects.create_invite(user, self)
-
-    def waiting_members(self):
-        from members.models import Member
-        return Member.objects.filter(pointer=self, status=WAITING)
-
-    def decline_members(self):
-        from members.models import Member
-        return Member.objects.filter(pointer=self, status=DECLINE)
-
-    def going_members(self):
-        from members.models import Member
-        return Member.objects.filter(pointer=self, status=GOING)

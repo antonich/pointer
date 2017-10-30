@@ -8,13 +8,11 @@ class AlreadyExistsError(IntegrityError):
 class PointerIsOutOfDateError(IntegrityError):
     pass
 
-
 class EmptyFieldError(IntegrityError):
     pass
 
 class MemberDoesnotExists(IntegrityError):
     pass
-#
-#
-# class RequestNotFoundError(IntegrityError):
-#     pass
+
+class PointerDoesNotExist(IntegrityError):
+    pass

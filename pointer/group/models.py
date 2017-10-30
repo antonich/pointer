@@ -29,7 +29,6 @@ class GroupsManager(models.Manager):
     def create_group_from_pointer(self, name, author, pointer):
         from members.models import Member
         people = [member.user for member in Member.objects.going_members(pointer=pointer)]
-        print(people)
         return self.create_group(name=name, author=author, people=people)
 
     def get_groups(self, user):
@@ -57,7 +56,3 @@ class Group(models.Model):
 
     def remove(self, user):
         self.people.remove(user)
-
-
-
-

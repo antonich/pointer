@@ -40,14 +40,14 @@ class TestInvite(TestCase):
     def test_accept_invite(self):
         invite = Invite.objects.create_invite(self.user1, self.point)
         invite.accept()
-        self.assertEqual(len(self.point.going_members()), 2)
+        self.assertEqual(len(Member.objects.going_members(self.point)), 2)
         # invite is deleted
         self.assertEqual(Invite.objects.all().count(), 0)
 
     def test_decline_invite(self):
         invite = Invite.objects.create_invite(self.user1, self.point)
         invite.decline()
-        self.assertEqual(len(self.point.decline_members()), 1)
+        self.assertEqual(len(Member.objects.decline_members(self.point)), 1)
         # invite is deleted
         self.assertEqual(Invite.objects.all().count(), 0)
 
