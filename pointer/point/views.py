@@ -21,3 +21,13 @@ class AuthorPointerList(APIView):
         pointer_list = Pointer.objects.author_pointer_list(request.user)
         serializer = PointerSerializer(pointer_list, many=True)
         return Response(serializer.data)
+
+
+class CreatePointer(APIView):
+        '''
+            Pointer creation api view.
+        '''
+        model = Pointer
+        permission_classes = (IsAuthenticated,)
+        #authentication_classes = (TokenAuthentication, )
+        serializer_class = PointerSerializer

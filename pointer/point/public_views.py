@@ -36,4 +36,4 @@ class CreatePublicPointer(generics.CreateAPIView):
         model = PublicPointer
         permission_classes = (IsAuthenticated,)
         #authentication_classes = (TokenAuthentication, )
-        serializer_class = PublicPointer
+        serializer_class = PublicPointerSerializer

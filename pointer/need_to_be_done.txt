@@ -1,7 +1,7 @@
-- invite serializers with tests;
-- members serializers with tests;
+- invite serializers with tests; +
+- members serializers with tests; +
+- point views; (add views to create public and private pointer with help of invite)
 - members views;
-- point views;
 - invite views;
 - facebook login sys;
 - facebook api for friends;

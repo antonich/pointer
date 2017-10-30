@@ -28,6 +28,21 @@ class TestPointer(TestCase):
         return Pointer.objects.create_pointer(author=self.user1, title=title, \
             desc='party hard', pdate=datetime.now(timezone.utc)+timedelta(days=1))
 
+    def test_create_pointer(self):
+        pointer_request = self.client.post('/point/create_pointer/', {
+            'author': self.user1.pk, 'title': 'hard party na hatie', \
+                'description': 'party', 'pointer_date':datetime.now(timezone.utc)+timedelta(days=1)
+        })
+        self.assertEqual(pointer_request.status_code, 201)
+        self.assertEqual(Pointer.objects.filter(author=self.user1, title='hard party na hatie').count(), 1)
+
+    def test_create_pointer_without_field(self):
+        pointer_request = self.client.post('/point/create_pointer/', {
+            'title': 'hard party na hatie', \
+                'description': 'party', 'pointer_date':datetime.now(timezone.utc)+timedelta(days=1)
+        })
+        self.assertEqual(pointer_request.status_code, 400)
+
     def test_pointer_list(self):
         self.create_pointer()
         self.create_pointer(title="party hard2")
