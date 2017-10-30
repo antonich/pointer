@@ -14,17 +14,23 @@ class GroupsManager(models.Manager):
 
         if author \
                 in people:
-            raise ValueError("You can't add yourself in group.")
+            people.remove(author)
+
         group = self.model(
             name=name,
             author=author
         )
         group.save()
-        group.people = people
-        # for p in people:
-        #     group.add(p)
+        for p in people:
+            group.add(p)
         group.save()
         return group
+
+    def create_group_from_pointer(self, name, author, pointer):
+        from members.models import Member
+        people = [member.user for member in Member.objects.going_members(pointer=pointer)]
+        print(people)
+        return self.create_group(name=name, author=author, people=people)
 
     def get_groups(self, user):
         return Group.objects.filter(author=user)
