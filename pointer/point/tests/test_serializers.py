@@ -15,7 +15,8 @@ class TestPointerSerializer(TestCase):
             desc='party hard', pdate=datetime.now(timezone.utc)+timedelta(days=1))
 
     def set_data(self, author, title='party', desc='party hard'):
-        return {'author': author.pk, 'title': title, 'desc': desc, 'pdate': datetime.now(timezone.utc)+timedelta(days=1)}
+        return {'author': author.pk, 'title': title, 'desc': desc, \
+            'pdate': datetime.now(timezone.utc)+timedelta(days=1)}
 
     def test_pointer(self):
         point = Pointer.objects.filter(author=self.user1)
@@ -28,7 +29,10 @@ class TestPointerCreation(TestCase):
             password="password123", email="email1@gmail.com")
 
     def test_create_pointer(self):
-        serial = PointerSerializer(data={'author': self.user1.pk, 'title': 'party hard', 'description': 'going to party', 'pointer_date': datetime.now(timezone.utc)+timedelta(days=1)})
+        serial = PointerSerializer(data={'author': self.user1.pk, \
+            'title': 'party hard', 'description': 'going to party', \
+                'pointer_date': datetime.now(timezone.utc)+timedelta(days=1)
+        })
         self.assertTrue(serial.is_valid())
 
         serial.save()

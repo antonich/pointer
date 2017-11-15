@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 
 from users.models import User
+from users.models import NoTokenForUser, UserAlreadyInUse
 
 
 class UserTest(TestCase):
@@ -46,7 +47,7 @@ class UserTest(TestCase):
     def testUserWithAlreadyUsedEmailOrUsername(self):
         user = self.createUser(self.username, self.email, self.password)
         # Checks if user is in use with used username or email
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(UserAlreadyInUse):
             User.objects.is_already_in_use(self.email, self.username)
 
     def testUserWithAlreadyUsedEmailOrUsernameWithoutUserObject(self):

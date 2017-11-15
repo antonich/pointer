@@ -9,9 +9,10 @@ from django.dispatch import receiver
 
 from rest_framework.authtoken.models import Token
 
+from users.exceptions import NoTokenForUser, UserAlreadyInUse
+
 import random, string
 
-NO_TOKEN = "This user doesn't have token."
 
 '''
     Manager for user below
@@ -61,14 +62,14 @@ class UserManager(BaseUserManager):
         try:
             return Token.objects.get(user=user)
         except:
-            raise ValidationError(NO_TOKEN)
+            raise ValidationError(NoTokenForUser)
 
     def is_already_in_use(self, email, username):
         try:
             user = self.create_user(email=email, username=username)
             return 0
         except IntegrityError: # Error for already in use email or username
-            raise ValidationError('This user is already in user')
+            raise UserAlreadyInUse
 
 '''
     Model to represent User
@@ -113,4 +114,3 @@ class User(AbstractBaseUser, PermissionsMixin):
     @property
     def is_staff(self):
         return self.is_admin
-

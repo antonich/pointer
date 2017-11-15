@@ -45,6 +45,12 @@ class TestPointer(TestCase):
         point = self.create_pointer()
         self.assertEqual(Member.objects.all().count(), 1)
 
+    def test_point_is_out_of_date(self):
+        with self.assertRaises(PointerIsOutOfDateError):
+            point = Pointer.objects.create_pointer(author=self.user1, title="party", \
+                desc='party hard', pdate=datetime.now(timezone.utc)-timedelta(days=1))
+
+
 
 class TestPublicPointer(TestCase):
     def setUp(self):
