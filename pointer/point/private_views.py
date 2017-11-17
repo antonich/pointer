@@ -12,7 +12,7 @@ from point.serializers import PrivatePointerSerializer
 from members.models import Member
 from point.exceptions import *
 
-class CreatePublicPointer(generics.CreateAPIView):
+class CreatePrivatePointer(generics.CreateAPIView):
         '''
             Private Pointer creation api view.
         '''

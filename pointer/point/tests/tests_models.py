@@ -50,6 +50,11 @@ class TestPointer(TestCase):
             point = Pointer.objects.create_pointer(author=self.user1, title="party", \
                 desc='party hard', pdate=datetime.now(timezone.utc)-timedelta(days=1))
 
+    def test_after_pointer_deleted_no_authour_as_member(self):
+        point = self.create_pointer()
+        point.delete()
+
+        self.assertEqual(Member.objects.all().count(), 0)
 
 
 class TestPublicPointer(TestCase):

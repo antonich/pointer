@@ -45,7 +45,7 @@ class Invite(models.Model):
         Pointer,
         related_name='event_for_invite'
     )
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField(default=timezone.now)
 
     objects = InviteManager()
 

@@ -11,3 +11,5 @@ ALL NEXT VIEWS WITH TOKEN AUTH;
 UWAGI:
 - needed to user force_authentication, because users gets token when logins though \
 		UserLoginView;
+
+- if want to enter from browser then need to add Basic authentication;

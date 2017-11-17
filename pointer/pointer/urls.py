@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^users/', include('users.urls')),
     url(r'^friends/', include('friends.urls')),
     url(r'^point/', include('point.urls')),
+    url(r'^members/', include('members.urls')),
 ]
