@@ -23,7 +23,7 @@ class TestInviteSerializer(TestCase):
         serial = InviteSerializer(invite)
         self.assertEqual(serial.data['pointer'], point.pk)
 
-class TestPointerCreation(TestCase):
+class TestInviteCreation(TestCase):
     def test_create_invite(self):
         user1 = User.objects.create_user(username="User1", \
             password="password123", email="email1@gmail.com")

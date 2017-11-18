@@ -70,6 +70,13 @@ class TestPublicPointer(TestCase):
         # self.assertpointer_request.data['author']
         self.assertEqual(pointer_request.status_code, 400)
 
+    def test_create_pointer_with_unknown_user(self):
+        pointer_request = self.client.post('/point/create_public_pointer/', {
+            'author': self.user1.pk+100, 'title': 'hard party na hatie', \
+                'description': 'party', 'pointer_date':datetime.now(timezone.utc)+timedelta(days=1)
+        })
+        self.assertEqual(pointer_request.status_code, 400)
+
     def test_delete_ppointer(self):
         pointer_request = self.client.post('/point/create_public_pointer/', {
             'author': self.user1.pk, 'title': 'hard party na hatie', \

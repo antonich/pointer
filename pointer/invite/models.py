@@ -10,6 +10,7 @@ from members.models import Member
 from members.exceptions import *
 from members.choices import *
 from friends.models import Friendship
+from point.exceptions import *
 
 class InviteManager(models.Manager):
     def create_invite(self, user, pointer):
@@ -56,24 +57,29 @@ class Invite(models.Model):
         return "Invitation to %s pointer %s" % (self.to_user, self.pointer)
 
     def accept(self):
-        try:
-            member = Member.objects.get(user=self.to_user, \
-                pointer=self.pointer)
-        except:
-            raise MemberDoesnotExists
-
+        # try:
+        #     member = Member.objects.get(user=self.to_user, \
+        #         pointer=self.pointer)
+        # except Member.DoesNotExist:
+        #     raise MemberDoesnotExists
+        # except Pointer.DoesNotExist:
+        #     raise PointerDoesNotExist
+        member = Member.objects.get(user=self.to_user, \
+            pointer=self.pointer)
         member.status = GOING
         member.save()
 
         self.delete()
 
     def decline(self):
-        try:
-            member = Member.objects.get(user=self.to_user, \
-                pointer=self.pointer)
-        except:
-            raise MemberDoesnotExists
+        # try:
+        #     member = Member.objects.get(user=self.to_user, \
+        #         pointer=self.pointer)
+        # except:
+        #     raise MemberDoesnotExists
 
+        member = Member.objects.get(user=self.to_user, \
+            pointer=self.pointer)
         member.status = DECLINE
         member.save()
 

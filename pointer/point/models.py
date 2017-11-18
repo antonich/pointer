@@ -61,7 +61,6 @@ class Pointer(models.Model):
 class PublicPointerManager(models.Manager):
     pass
 
-
 class PublicPointer(Pointer):
     is_private = models.BooleanField(default=False)
 
@@ -84,7 +83,6 @@ class PublicPointer(Pointer):
 
 class PrivatePointerManager(models.Manager):
     pass
-
 
 class PrivatePointer(Pointer):
     is_private = models.BooleanField(default=True)
