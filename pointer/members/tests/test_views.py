@@ -8,6 +8,7 @@ from users.models import User
 from point.models import Pointer, PublicPointer, PrivatePointer
 from members.models import Member
 from members.views import MemberListView
+from members.choices import *
 
 from datetime import datetime, timedelta
 from django.utils import timezone
@@ -55,3 +56,19 @@ class MemberTest(TestCase):
         request = self.client.get('/members/members_list/'+str(self.point.pk+100)+'/')
 
         self.assertEqual(request.status_code, 404)
+
+    def test_delete_member_from_point(self):
+        member = Member.objects.create_member(self.user2, self.point, GOING)
+        request = self.client.delete('/members/delete_member/'+str(member.pk)+'/')
+
+        self.assertEqual(request.status_code, 202)
+        # only author
+        self.assertEqual(Member.objects.all().count(), 1)
+
+    def test_deny_non_author_to_delete_member(self):
+        point = PublicPointer.objects.create_pointer(author=self.user2, title='party hard123', \
+            desc=' hard', pdate=datetime.now(timezone.utc)+timedelta(days=1))
+        member = Member.objects.create_member(self.user1, point, GOING)
+        request = self.client.delete('/members/delete_member/'+str(member.pk)+'/')
+
+        self.assertEqual(request.status_code, 401)

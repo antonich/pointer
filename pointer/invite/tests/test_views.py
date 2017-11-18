@@ -75,3 +75,13 @@ class InviteViewTest(TestCase):
         self.assertEqual(len(Member.objects.decline_members(user2_point)), 1)
         self.assertEqual(request.status_code, 202)
         self.assertEqual(Invite.objects.all().count(), 0)
+
+    def test_invite_view_list(self):
+        Friendship.objects.create_friendship(self.user1, self.user2)
+        point = PrivatePointer.objects.create_pointer(author=self.user2, title='party123', \
+            desc='party ha12213rd', pdate=datetime.now(timezone.utc)+timedelta(days=1))
+        invite = Invite.objects.create_invite(self.user1, point)
+        request = self.client.get('/invite/invite_list/')
+
+        self.assertEqual(request.status_code, 200)
+        self.assertEqual(len(request.data), 1)

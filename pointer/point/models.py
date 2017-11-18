@@ -57,6 +57,9 @@ class Pointer(models.Model):
     def __unicode__(self):
         return "Pointer %s" % (self.title)
 
+    def is_author(self, user):
+        return True if user == self.author else False
+
 
 class PublicPointerManager(models.Manager):
     pass

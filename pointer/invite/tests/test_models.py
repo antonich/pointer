@@ -60,3 +60,7 @@ class TestInvite(TestCase):
         invite.accept()
         with self.assertRaises(AlreadyMemberOfThisPointer):
             invite = Invite.objects.create_invite(self.user1, self.point)
+
+    def test_cant_invite_myself(self):
+        with self.assertRaises(InviteOnlyFriendsError):
+            invite = Invite.objects.create_invite(self.user2, self.point)

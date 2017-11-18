@@ -15,6 +15,26 @@ from friends.models import Friendship
 from point.models import PrivatePointer
 from point.exceptions import *
 
+class InviteListView(APIView):
+    '''
+        List invite list for user.
+    '''
+    model = Invite
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (TokenAuthentication, )
+    serializer_class = InviteSerializer
+
+    def get_object(self, user_id):
+        try:
+            user = User.objects.get(id=user_id)
+            return Invite.objects.filter(to_user=user)
+        except User.DoesNotExist:
+            raise Http404
+
+    def get(self, request, format=None):
+        invite_list = self.get_object(request.user.id)
+        serializer = InviteSerializer(invite_list, many=True)
+        return Response(serializer.data)
 
 class SendInviteView(APIView):
     '''

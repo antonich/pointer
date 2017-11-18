@@ -57,13 +57,6 @@ class Invite(models.Model):
         return "Invitation to %s pointer %s" % (self.to_user, self.pointer)
 
     def accept(self):
-        # try:
-        #     member = Member.objects.get(user=self.to_user, \
-        #         pointer=self.pointer)
-        # except Member.DoesNotExist:
-        #     raise MemberDoesnotExists
-        # except Pointer.DoesNotExist:
-        #     raise PointerDoesNotExist
         member = Member.objects.get(user=self.to_user, \
             pointer=self.pointer)
         member.status = GOING
@@ -72,12 +65,6 @@ class Invite(models.Model):
         self.delete()
 
     def decline(self):
-        # try:
-        #     member = Member.objects.get(user=self.to_user, \
-        #         pointer=self.pointer)
-        # except:
-        #     raise MemberDoesnotExists
-
         member = Member.objects.get(user=self.to_user, \
             pointer=self.pointer)
         member.status = DECLINE
