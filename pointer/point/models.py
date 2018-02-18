@@ -8,6 +8,7 @@ from django.dispatch import receiver
 from users.models import User
 from point.exceptions import *
 from members.choices import *
+from friends.models import Friendship
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
@@ -35,6 +36,41 @@ class PointerManager(models.Manager):
 
     def author_pointer_list(self, auth):
         return Pointer.objects.filter(author=auth)
+
+    def get_planned_pointerslist(self, user):
+        """
+            Returns list of planned public pointers.
+        """
+        from members.models import Member
+        pointers = list()
+        for i in Member.objects.filter(user=user):
+            # if not i.pointer.is_private: # also add prive pointers which author is invited
+            pointers.append(i.pointer)
+        return pointers
+
+    def get_suggested_pointerlist(self, user):
+        """
+            Returns all public pointers that friends are going to visit.
+        """
+        friendslist = Friendship.objects.friends_list(user)
+        pointers = list()
+        for user in friendslist: # for each friend
+            user_pointers = Pointer.objects.get_planned_pointerslist(user)# getting its pointers
+        #     for friends_pointer in user_pointers:# for each friend's pointer
+        #         found_flag = False
+        #         for el in pointers: #try to add it to suggested list but check if it is already there
+        #             if el["pointer"].id == friends_pointer.id:
+        #                 el["count"] = el["count"]+1
+        #                 found_flag = True#don't have to add it to list
+        #                 break
+        #         if not found_flag:#if we didn't found it we add it to list
+        #             pointers.append({"pointer": friends_pointer, "count": 1})
+        # #now we have list of pointers
+        # sorted_pointers = sorted(pointers, key=lambda k: k['count'])
+            for friends_pointer in user_pointers:
+                if not (friends_pointer in pointers):
+                    pointers.append(friends_pointer)
+        return pointers
 
 
 class Pointer(models.Model):

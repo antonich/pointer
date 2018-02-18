@@ -29,14 +29,14 @@ class UserTest(TestCase):
         #delete this user
         u.delete()
         self.assertEqual(User.objects.all().count(), 0)
-
-    def testUserFailsWithoutEmail(self):
-        with self.assertRaises(ValueError):
-            self.createUser(email="", username=self.username, password=self.password)
-
-    def testUserFailsWithoutUsername(self):
-        with self.assertRaises(ValueError):
-            user = self.createUser(email=self.email, username="", password=self.password)
+    
+    # def testUserFailsWithoutEmail(self):
+    #     with self.assertRaises(ValueError):
+    #         self.createUser(email="", username=self.username, password=self.password)
+    #
+    # def testUserFailsWithoutUsername(self):
+    #     with self.assertRaises(ValueError):
+    #         user = self.createUser(email=self.email, username="", password=self.password)
 
     def testUserWithDescMoreThan100(self):
         with self.assertRaises(ValidationError):

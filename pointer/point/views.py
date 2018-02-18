@@ -13,12 +13,32 @@ from point.serializers import PointerSerializer
 from members.models import Member
 from users.models import User
 
+class UserPointerStory(APIView):
+    """
+        Author pointer list.
+    """
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (TokenAuthentication, )
+
+    def get_object(self, request_user):
+        try:
+            user = User.objects.get(pk=request_user.pk)
+            return Pointer.objects.get_suggested_pointerlist(user)
+        except User.DoesNotExist:
+            raise Http404
+
+    def get(self, request, format=None):
+        pointer_list = self.get_object(request.user)
+        serializer = PointerSerializer(pointer_list, many=True)
+        return Response(serializer.data)
+
+
 class AuthorPointerList(APIView):
     """
         Author pointer list.
     """
     permission_classes = (IsAuthenticated,)
-    #authentication_classes = (TokenAuthentication, )
+    authentication_classes = (TokenAuthentication, )
 
     def get_object(self, request_user):
         try:

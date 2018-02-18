@@ -1,10 +1,10 @@
 - invite serializers with tests; +
 - members serializers with tests; +
 ALL NEXT VIEWS WITH TOKEN AUTH;
-- point views; (add views to create public and private pointer with help of invite);
-- members views;
-- invite views;
-- facebook login sys;
+- point views; (add views to create public and private pointer with help of invite) +;
+- members views+;
+- invite views+;
+- facebook login sys+;
 - facebook api for friends;
 - user is private;
 
@@ -13,3 +13,4 @@ UWAGI:
 		UserLoginView;
 
 - if want to enter from browser then need to add Basic authentication;
+- user 'is active' was set to 'default = True' to test mobile app registration;

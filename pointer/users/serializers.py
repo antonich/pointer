@@ -1,8 +1,14 @@
 from django.contrib.auth.models import Group
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import get_user_model # for not custom user model
+from django.conf import settings
 
 from rest_framework import serializers
+from rest_framework import status
+from rest_framework.authtoken.models import Token
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
 
 from .models import User
 
@@ -24,19 +30,23 @@ class UserCreationSerializer(serializers.ModelSerializer):
         read_only_fields = ('id',)
 
     def create(self, validated_data):
+        print 'siema'
         user = User.objects.create_user(
             username=validated_data['username'],
             email=validated_data['email'],
-            name=validated_data['name']
+            # name=validated_data['name'],
         )
+        user.set_password(validated_data["password"])
+        user.save()
+        print user.username
         return user
 
-    # def sendEmail(self, datas):
-    #         link="http://yourdomain.com/activate/"+datas['activation_key']
-    #         c=Context({'activation_link':link,'username':datas['username']})
-    #         f = open(MEDIA_ROOT+datas['email_path'], 'r')
-    #         t = Template(f.read())
-    #         f.close()
-    #         message=t.render(c)
-    #         #print unicode(message).encode('utf8')
-    #         send_mail(datas['email_subject'], message, 'yourdomain <no-reply@yourdomain.com>', [datas['email']], fail_silently=False)
+
+class SocialSerializer(serializers.Serializer):
+    """
+        Serializer which accepts an OAuth2 access token.
+    """
+    access_token = serializers.CharField(
+        allow_blank=False,
+        trim_whitespace=True,
+    )

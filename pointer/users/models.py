@@ -26,13 +26,14 @@ def generate_entry():
 class UserManager(BaseUserManager):
 
     def create_user(self, username, email, description='', name='', password=None):
-        # Checks if email is empty
-        if not email:
-            raise ValueError('Users must have an email.')
-
-        #Checks if username is empty
-        if not username:
-            raise ValueError("User must have an username.")
+        """ Check for email and username in application because of facebook login users without data """
+        # # Checks if email is empty
+        # if not email:
+        #     raise ValueError('Users must have an email.')
+        #
+        # #Checks if username is empty
+        # if not username:
+        #     raise ValueError("User must have an username.")
 
         # Checks for description length
         if len(description) > 100:
@@ -62,7 +63,7 @@ class UserManager(BaseUserManager):
         try:
             return Token.objects.get(user=user)
         except:
-            raise ValidationError(NoTokenForUser)
+            raise NoTokenForUser
 
     def is_already_in_use(self, email, username):
         try:
@@ -77,7 +78,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=100, unique=True)
     username = models.CharField(max_length=40, unique=True)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     #Editable stuff
     name = models.CharField(max_length=130, blank=True, default='')

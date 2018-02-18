@@ -7,7 +7,7 @@ from .forms import UserCreationForm
 class CustomUserAdmin(UserAdmin):
     add_form = UserCreationForm
 
-    list_display = ('username', 'email', 'is_superuser', 'is_admin')
+    list_display = ('username', 'email', 'is_active', 'is_admin')
     list_filter = ('is_superuser', )
 
     fieldsets = (

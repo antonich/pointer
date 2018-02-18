@@ -7,6 +7,7 @@ from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from users.models import User
 from rest_framework.authtoken.models import Token
 from users.views import UserCreationView
+from users.exceptions import *
 
 BLANK_FIELD = 'This field may not be blank.'
 REG_USERNAME = 'user with this username already exists.'
@@ -91,6 +92,16 @@ class UserCreationViewTest(TestCase):
         # and code equal 400
         self.assertEqual(request.status_code, 400)
 
+    def test_fails_user_creation_without_name(self):
+        data = self.setData('testin123123', 'testing123', \
+            'testcase123@gmail.com')
+
+        # create user without username
+        request = self.client.post('/users/register/', { \
+            'username': data['username'], 'password': data['password'], \
+                'email': data['email']})
+        self.assertEqual(request.status_code, 201)
+
     def test_fails_with_already_regis_username(self):
         data = self.setData('testin', 'testing123', \
             'testcase123@gmail.com')
@@ -163,13 +174,9 @@ class UserLoginViewTest(TestCase):
         self.assertTrue(user.is_anonymous())
 
         self.assertEqual(request.status_code, 401)
-        self.assertEqual(UNAUTH_USER, request.data['errors'])
+        self.assertEqual(UNAUTH_USER, request.data['detail'])
 
     def test_auth_user_cant_get_access_to_this_page(self):
-        # first login
-        user = self.client.login(username=self.user.username, \
-            password='testcase123')
-
         # then post a request
         request = self.client.post('/users/login/', {
             'username': self.user.username, 'password': 'testcase123'
@@ -178,7 +185,7 @@ class UserLoginViewTest(TestCase):
         user = auth.get_user(self.client)
         self.assertFalse(user.is_anonymous())
 
-        self.assertEqual(request.status_code, 400)
+        self.assertEqual(request.status_code, 200)
 
     def test_registered_user_doesnt_have_access_if_not_active(self):
         user = User.objects.create_user(username='antonich', \
@@ -245,20 +252,39 @@ class UserLogoutTest(TestCase):
         self.user.is_active = True
         self.user.save()
 
+
     def test_token_deletes_after_loging_out(self):
         self.client.logout()
-
+        # to get token for self.user
         request = self.client.post('/users/login/', {
             'username': self.user.username, 'password': 'testcase123'
         })
+        self.client.logout()
+
+        token = User.objects.get_user_token(self.user)
+
+        authoriz = 'Token ' + str(token)
+
+        # check token deletes after loging out
+        request = self.client.post('/users/logout/', HTTP_AUTHORIZATION="Token {}".format(token))
 
         # check if not anonymous
         user = auth.get_user(self.client)
-        self.assertFalse(user.is_anonymous())
-
-        # check token deletes after loging out
-        request = self.client.post('/users/logout/')
+        self.assertTrue(user.is_anonymous())
 
         # Validation error because token was deleted after logout
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(NoTokenForUser):
             token = User.objects.get_user_token(self.user)
+
+class SocialUserTest(TestCase):
+    def setUp(self):
+        self.user_access_token = 'EAACHaTaBVBgBADILNs3vaMP9DRepu75xJzry8rulGvt3Wa2du7rAqDzpRlnj5NGnUb6r4Km9BFmyUm4KO8shujzgvixbQZAhZCwRGWxSZA5eGrFDAKz9LTCVMvwVARR2Pq9sGndHoWZBaZA1xhwt0PxtJKSEeOo8cA5wLbHHjj4vDr7I5ruys9tfNxK2JHAaTx4BsEFJF3yWX2wUzQ7ZALNkdUhuiW8La6vK1BQbzIGlTBOYvBjzr8'
+
+    def test_user_register_with_facebook(self):
+        pass
+        # request = self.client.post('/users/social/facebook/', {'access_token': self.user_access_token})
+        # try:
+        #     # User.objects.all()[0].email
+        #     User.objects.all()[0].name
+        # except:
+        #     pass

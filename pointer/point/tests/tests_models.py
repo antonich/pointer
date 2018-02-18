@@ -21,6 +21,10 @@ class TestPointer(TestCase):
         return Pointer.objects.create_pointer(author=self.user1, title="party", \
             desc='party hard', pdate=datetime.now(timezone.utc)+timedelta(days=1))
 
+    def create_pointer_with_user(self, u):
+        return Pointer.objects.create_pointer(author=u, title="party", \
+            desc='party hard', pdate=datetime.now(timezone.utc)+timedelta(days=1))
+
     def test_point_is_created_correctly(self):
         point = self.create_pointer()
         self.assertTrue(Pointer.objects.all(), 1)
@@ -55,6 +59,34 @@ class TestPointer(TestCase):
         point.delete()
 
         self.assertEqual(Member.objects.all().count(), 0)
+
+    def test_get_suggested_pointer_list(self):
+        user2 = User.objects.create_user(email='email2', \
+            username='pass2')
+        user3 = User.objects.create_user(email='email3', \
+            username='pass3')
+        user4 = User.objects.create_user(email='email4', \
+            username='pass4')
+        user5 = User.objects.create_user(email='email5', \
+            username='pass5')
+
+        self.create_pointer_with_user(user2)
+        p2 = self.create_pointer_with_user(user3)
+        self.create_pointer_with_user(user4)
+        self.create_pointer_with_user(user5)
+
+        # members for pointers to show count variable
+        Member.objects.create_member(user2, p2)
+        Member.objects.create_member(user4, p2)
+        Member.objects.create_member(user5, p2)
+
+        Friendship.objects.create_friendship(self.user1, user2)
+        Friendship.objects.create_friendship(self.user1, user3)
+        Friendship.objects.create_friendship(self.user1, user4)
+        # not friends with self.user5
+
+        self.assertEqual(Pointer.objects.all().count(), 4)
+        self.assertEqual(len(Pointer.objects.get_suggested_pointerlist(self.user1)), 3)
 
 
 class TestPublicPointer(TestCase):
