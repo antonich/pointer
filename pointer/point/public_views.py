@@ -25,9 +25,13 @@ class JoinPublicPointer(APIView):
         except PublicPointer.DoesNotExist:
             raise Http404
 
-    def put(self, request, pk, format=None):
+    def post(self, request, pk, format=None):
         pointer = self.get_object(pk)
-        pointer.join(request.user)
+        try:
+            pointer.join(request.user)
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        print("Sending http201Created")
         return Response(status=status.HTTP_201_CREATED)
 
 class CreatePublicPointer(generics.CreateAPIView):

@@ -119,6 +119,10 @@ class Friendship(models.Model):
 
     objects = FriendshipManager()
 
+    class Meta:
+        unique_together = ('from_user', 'to_user')
+        ordering = ['from_user']
+
     def __unicode__(self):
         return "User #%s is friends with #%s" % (self.from_user, self.to_user)
 

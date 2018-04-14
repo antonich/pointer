@@ -7,6 +7,7 @@ from users.models import User
 from point.models import Pointer
 from members.models import Member
 from members.serializers import MemberSerializer
+from users.serializers import UserSerializer
 
 class MemberTest(TestCase):
     def setUp(self):
@@ -26,9 +27,9 @@ class MemberTest(TestCase):
         self.assertEqual(serializer.data[0]['pointer'], self.point.pk)
 
     def test_member_is_created(self):
-        serial = MemberSerializer(data={'user': self.user2.pk, 'pointer': self.point.pk})
+        serial_user = UserSerializer(self.user2)
+        serial = MemberSerializer(data={'user': serial_user.data, 'pointer': self.point.pk})
         self.assertTrue(serial.is_valid())
-
         serial.save()
         # 2 plus pointer author
         self.assertEqual(Member.objects.all().count(), 2)

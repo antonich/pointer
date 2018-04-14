@@ -1,7 +1,7 @@
 from django.test import TestCase
 from rest_framework import serializers
 
-from users.serializers import UserCreationSerializer
+from users.serializers import UserCreationSerializer, UserSerializer
 from users.models import User
 
 class UserCreationSerializerTest(TestCase):
@@ -56,3 +56,12 @@ class UserCreationSerializerTest(TestCase):
         self.data = self.set_data(name='')
         serial = UserCreationSerializer(data=self.data)
         self.assertTrue(serial.is_valid())
+
+class UserSerializerTest(TestCase):
+    def setUp(self):
+        self.user1 = User.objects.create_user(username='asdasd', \
+            email='adsad@fasd.asd', password='adasd')
+
+    def test_represention_existing_user(self):
+        serial = UserSerializer(self.user1)
+        print serial

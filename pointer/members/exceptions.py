@@ -1,7 +1,7 @@
 from django.db import IntegrityError
 
 
-class AlreadyExistsError(IntegrityError):
+class MemberAlreadyExistsError(IntegrityError):
     pass
 
 class EmptyFieldError(IntegrityError):

@@ -23,17 +23,6 @@ class TestRequest(TestCase):
         with self.assertRaises(ValidationError):
             Request.objects.send_request(from_user=self.user1, to_user=self.user1)
 
-    # def test_users_already_friends(self):
-    #     # make friendship
-    #     request = Request.objects.send_request(from_user=self.user1, to_user=self.user2)
-    #     request.accept()
-    #
-    #     # check if friendship is created
-    #     self.assertTrue(Friendship.objects.are_friends(user1=self.user1, user2=self.user2))
-    #
-    #     with self.assertRaises(AlreadyFriendsError):
-    #         Request.objects.send_request(from_user=self.user1, to_user=self.user2)
-
     def test_request_is_already_sent(self):
         Request.objects.send_request(from_user=self.user1, to_user=self.user2)
         with self.assertRaises(AlreadyExistsError):

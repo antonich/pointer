@@ -5,8 +5,9 @@ from django.conf import settings
 
 from users.models import User
 from point.models import Pointer
-from members.exceptions import *
+from members.exceptions import MemberAlreadyExistsError
 from members.choices import *
+from point.exceptions import PointerDoesNotExist
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
@@ -17,7 +18,7 @@ class MemberManager(models.Manager):
             raise EmptyFieldError
 
         if Member.objects.filter(user=user, pointer=pointer):
-            raise AlreadyExistsError
+            raise MemberAlreadyExistsError
 
         member = self.model(
             user=user,
@@ -30,7 +31,22 @@ class MemberManager(models.Manager):
         return member
 
     def going_members(self, pointer):
-        return Member.objects.filter(pointer=pointer, status=GOING)
+        ''' without author'''
+        try:
+            pointer = Pointer.objects.get(pk=pointer.pk)
+            author = pointer.author
+        except:
+            raise PointerDoesNotExist
+        return Member.objects.filter(pointer=pointer, status=GOING).exclude(user=author)
+
+    def going_members_without_active_user(self, pointer, user):
+        ''' without author'''
+        try:
+            pointer = Pointer.objects.get(pk=pointer.pk)
+            author = pointer.author
+        except:
+            raise PointerDoesNotExist
+        return Member.objects.filter(pointer=pointer, status=GOING).exclude(user=author).exclude(user=user)
 
     def decline_members(self, pointer):
         return Member.objects.filter(pointer=pointer, status=DECLINE)

@@ -16,13 +16,21 @@ VALIDATION_ERROR = 'User is not defined.'
 
 class UserSerializer(serializers.ModelSerializer):
     """
-        Serializer people.
+        Serializer people. In use for members.
     """
+
     class Meta:
         model = User
-        fields = ('id', 'username')
+        fields = ('id', 'username',)
+        extra_kwargs = {
+            'username': {'validators': [], 'read_only': False}, # to get rid of username validator for uniqueness
+            'id': {'validators': [], 'read_only': False} # set False to set in serializer create
+        }
 
 class UserCreationSerializer(serializers.ModelSerializer):
+    """
+        Use to create users.
+    """
     class Meta:
         model = User
         fields = ('id', 'username', 'password', 'email', 'name', 'description')
@@ -30,7 +38,6 @@ class UserCreationSerializer(serializers.ModelSerializer):
         read_only_fields = ('id',)
 
     def create(self, validated_data):
-        print 'siema'
         user = User.objects.create_user(
             username=validated_data['username'],
             email=validated_data['email'],
@@ -38,7 +45,6 @@ class UserCreationSerializer(serializers.ModelSerializer):
         )
         user.set_password(validated_data["password"])
         user.save()
-        print user.username
         return user
 
 

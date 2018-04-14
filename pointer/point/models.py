@@ -7,8 +7,9 @@ from django.dispatch import receiver
 
 from users.models import User
 from point.exceptions import *
-from members.choices import *
+from members.choices import GOING, DECLINE, WAITING
 from friends.models import Friendship
+from members.exceptions import MemberDoesnotExists
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
@@ -43,7 +44,7 @@ class PointerManager(models.Manager):
         """
         from members.models import Member
         pointers = list()
-        for i in Member.objects.filter(user=user):
+        for i in Member.objects.filter(user=user, status=GOING):
             # if not i.pointer.is_private: # also add prive pointers which author is invited
             pointers.append(i.pointer)
         return pointers

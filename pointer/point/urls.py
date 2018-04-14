@@ -10,5 +10,7 @@ urlpatterns = [
     url(r'create_public_pointer/$', CreatePublicPointer.as_view(), name="create_public_pointer"),
     url(r'create_private_pointer/$', CreatePrivatePointer.as_view(), name="create_private_pointer"),
     url(r'delete_pointer/(?P<pk>[0-9]+)/$', DeletePointer.as_view(), name="delete_pointer"),
-    url(r'user_story_list/$', UserPointerStory.as_view(), name="user_story_list")
+    url(r'user_story_list/$', UserPointerStory.as_view(), name="user_story_list"),
+    url(r'storyline/$', StorylineViewSet.as_view(), name="storyline"),
+    url(r'pointer_data/(?P<pk>[0-9]+)/$', PointerData.as_view(), name="pointer_data")
 ]

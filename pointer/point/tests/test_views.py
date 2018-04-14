@@ -87,6 +87,42 @@ class TestPointer(TestCase):
         request = self.client.get('/point/user_story_list/', HTTP_AUTHORIZATION="Token {}".format(token))
         self.assertEqual(len(request.data), 2)
 
+    def test_storyline_pointer_list(self):
+        user2 = User.objects.create_user(username="2", \
+            password="pass2", email="email2")
+        user3 = User.objects.create_user(username="3", \
+            password="pass3", email="email3")
+        user4 = User.objects.create_user(username="4", \
+            password="pass4", email="email4")
+        self.create_pointer_with_user(user2, 'party1')
+        self.create_pointer_with_user(user3, 'party2')
+        self.create_pointer_with_user(user4, 'party3')
+        self.create_pointer_with_user(user2, 'party123')
+
+        fr1 = Friendship.objects.create_friendship(self.user1, user2)
+        Friendship.objects.create_friendship(self.user1, user3)
+        Friendship.objects.create_friendship(self.user1, user4)
+
+        token = Token(user=self.user1)
+        token.save()
+        request = self.client.get('/point/storyline/', HTTP_AUTHORIZATION="Token {}".format(token))
+
+    def test_get_pointer_data_with_pk(self):
+        point = self.create_pointer_with_user(self.user2, 'party1')
+        token = Token(user=self.user2)
+        token.save()
+        request = self.client.get('/point/pointer_data/'+str(point.id)+'/', HTTP_AUTHORIZATION="Token {}".format(token))
+        self.assertEqual(request.status_code, 200)
+
+    def test_pointer_data_serializer_with_members(self):
+        Friendship.objects.create_friendship(self.user1, self.user2)
+        point = self.create_pointer_with_user(self.user1, 'party123')
+
+        token = Token(user=self.user1)
+        token.save()
+        request = self.client.get('/point/pointer_data/'+str(point.id)+'/', HTTP_AUTHORIZATION="Token {}".format(token))
+        self.assertEqual(len(request.data["members"]), 0)
+
 class TestPublicPointer(TestCase):
     def setUp(self):
         self.user1 = User.objects.create_user(username="User1", \
@@ -148,14 +184,14 @@ class TestPublicPointer(TestCase):
     def test_join_existing_pointer(self):
         # user2 creates pointer
         pointer = self.create_ppointer()
-        pointer_request = self.client.put('/point/join_pointer/'+str(pointer.pk)+'/')
+        pointer_request = self.client.post('/point/join_pointer/'+str(pointer.pk)+'/')
         self.assertEqual(Member.objects.filter(user=self.user1, pointer=pointer).count(), 1)
         self.assertEqual(pointer_request.status_code, 201)
 
     def test_join_non_existing_pointer(self):
         # user2 creates pointer
         pointer = self.create_ppointer()
-        pointer_request = self.client.put('/point/join_pointer/'+str(pointer.pk+100)+'/')
+        pointer_request = self.client.post('/point/join_pointer/'+str(pointer.pk+100)+'/')
         self.assertEqual(Member.objects.filter(user=self.user1, pointer=pointer).count(), 0)
         self.assertEqual(pointer_request.status_code, 404)
 

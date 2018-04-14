@@ -25,10 +25,10 @@ NO_SUCH_OBJECT = 'Such type dont exist.'
 
 class FriendsList(APIView):
     """
-    List all friends of request user.
+        List all friends of request user.
     """
     permission_classes = (IsAuthenticated,)
-    #authentication_classes = (TokenAuthentication, )
+    authentication_classes = (TokenAuthentication, )
 
     def get(self, request, format=None):
         people = Friendship.objects.friends_list(request.user)
@@ -144,7 +144,7 @@ class RemoveFriendship(APIView):
         Remove friendship request.
     """
     permission_classes = (IsAuthenticated,)
-    #authentication_classes = (TokenAuthentication, )
+    authentication_classes = (SessionAuthentication, BasicAuthentication, TokenAuthentication)
 
     def get_object(self, pk):
         try:

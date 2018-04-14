@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login, logout
 from rest_framework import status
 from django.utils.six import BytesIO
 from rest_framework.parsers import JSONParser
+from rest_framework.authtoken.models import Token
+
 
 from users.models import User
 from friends.models import *
@@ -21,7 +23,6 @@ class RequestViewTest(TestCase):
         self.user4 = User.objects.create_user(username="User4", email="email4")
         user = self.client.login(username=self.user1.username, \
             password='password123')
-
 
     def tearDown(self):
         self.client.logout()
@@ -123,9 +124,11 @@ class RequestViewTest(TestCase):
         self.user2 = User.objects.create_user(username="User2", email="email2")
         self.user3 = User.objects.create_user(username="User3", email="email3")
         self.user4 = User.objects.create_user(username="User4", email="email4")
-        user = self.client.login(username=self.user1.username, \
+        self.client.login(username=self.user1.username, \
             password='password123')
 
+        self.token = Token(user=self.user1)
+        self.token.save()
 
     def tearDown(self):
         self.client.logout()
@@ -142,7 +145,7 @@ class RequestViewTest(TestCase):
 
     def test_list_of_friends_is_displayed(self):
         self.createFriendships()
-        friendslist = self.client.get("/friends/friends_list/")
+        friendslist = self.client.get("/friends/friends_list/", HTTP_AUTHORIZATION="Token {}".format(self.token))
         self.assertEqual(friendslist.status_code, 200)
         self.assertEqual(len(friendslist.data), len(Friendship.objects.friends_list(self.user1)))
 

@@ -26,12 +26,12 @@ class TestMember(TestCase):
 
     def test_create_member_with_more_pointers_fails(self):
         member = Member.objects.create_member(user=self.user1, pointer=self.point)
-        with self.assertRaises(AlreadyExistsError):
+        with self.assertRaises(MemberAlreadyExistsError):
             member1 = Member.objects.create_member(user=self.user1, pointer=self.point)
 
     def test_create_member_for_pointer_twice(self):
         member1 = Member.objects.create_member(user=self.user1, pointer=self.point)
-        with self.assertRaises(AlreadyExistsError):
+        with self.assertRaises(MemberAlreadyExistsError):
             member2 = Member.objects.create_member(user=self.user1, pointer=self.point)
 
     def test_create_member_can_have_more_pointers(self):
@@ -41,7 +41,7 @@ class TestMember(TestCase):
         member2 = Member.objects.create_member(user=self.user2, pointer=point1)
 
     def test_author_is_also_member(self):
-        with self.assertRaises(AlreadyExistsError):
+        with self.assertRaises(MemberAlreadyExistsError):
             member1 = Member.objects.create_member(user=self.user2, pointer=self.point)
 
     def test_members_pointer_list(self):
@@ -52,3 +52,9 @@ class TestMember(TestCase):
         member2 = Member.objects.create_member(user=self.user1, pointer=point1)
 
         self.assertEqual(len(Member.objects.users_pointer_list(self.user1)), 2)
+
+    def test_members_going_list_without_author(self):
+        point1 = Pointer.objects.create_pointer(author=self.user2, title="my bd", \
+            desc="we are partying hard today", pdate=datetime.now(timezone.utc)+timedelta(days=1))
+        Member.objects.create_member(self.user1, point1)
+        self.assertEqual(len(Member.objects.going_members(point1)), 1)

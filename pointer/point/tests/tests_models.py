@@ -11,6 +11,7 @@ from point.exceptions import *
 from invite.models import Invite
 from friends.models import Friendship
 from invite import exceptions
+from members.exceptions import MemberAlreadyExistsError, MemberDoesnotExists
 
 class TestPointer(TestCase):
     def setUp(self):
@@ -108,18 +109,27 @@ class TestPublicPointer(TestCase):
         point = self.create_ppointer()
 
         point.join(self.user2)
-        self.assertEqual(Member.objects.going_members(point)[0], Member.objects.get(user=self.user1, \
-            pointer=point))
 
-    def test_decline_pointer(self):
+        self.assertTrue(Member.objects.get(user=self.user2, \
+            pointer=point) in Member.objects.going_members(point))
+
+    def test_join_public_pointer_more_than_one_time(self):
         point = self.create_ppointer()
-        point.join(self.user2)
-        # with user
-        self.assertEqual(len(Member.objects.going_members(point)), 2)
 
-        point.decline(self.user2)
-        # only user
-        self.assertEqual(len(Member.objects.going_members(point)), 1)
+        point.join(self.user2)
+
+        with self.assertRaises(MemberAlreadyExistsError):
+            point.join(self.user2)
+
+    # def test_decline_pointer(self):
+    #     point = self.create_ppointer()
+    #     point.join(self.user2)
+    #     # with u
+    #     self.assertEqual(len(Member.objects.going_members(point)), 1)
+    #
+    #     point.decline(self.user2)
+    #     # only user
+    #     self.assertEqual(len(Member.objects.going_members(point)), 0)
 
     def test_not_member_cant_decline(self):
         with self.assertRaises(MemberDoesnotExists):

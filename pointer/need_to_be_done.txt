@@ -14,3 +14,12 @@ UWAGI:
 
 - if want to enter from browser then need to add Basic authentication;
 - user 'is active' was set to 'default = True' to test mobile app registration;
+
+FRIENDS:
+	- admin panel with forms need to be validated before creating;
+
+POINT:
+	- check for permissions before sending pointer data back;
+
+USER:
+	- user serializer should be representing user not creating, delete kwargs;

@@ -83,7 +83,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     #Editable stuff
     name = models.CharField(max_length=130, blank=True, default='')
     description = models.CharField(max_length=100, blank=True, default='')
-    #avatar = models.ImageField(upload_to='images')
+    avatar = models.ImageField(upload_to = 'media/avatars', default='media/default_avatar.png')
     activation_key = models.CharField(max_length=17, unique=True)
 
 

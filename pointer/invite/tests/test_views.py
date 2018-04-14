@@ -62,7 +62,7 @@ class InviteViewTest(TestCase):
         request = self.client.put('/invite/accept_invite/'+str(invite.pk)+'/')
 
         self.assertEqual(request.status_code, 202)
-        self.assertEqual(len(Member.objects.going_members(user2_point)), 2)
+        self.assertEqual(Member.objects.going_members(user2_point)[0].user, self.user1)
         self.assertEqual(Invite.objects.all().count(), 0)
 
     def test_decline_invite(self):
