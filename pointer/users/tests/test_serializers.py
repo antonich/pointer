@@ -64,4 +64,3 @@ class UserSerializerTest(TestCase):
 
     def test_represention_existing_user(self):
         serial = UserSerializer(self.user1)
-        print serial

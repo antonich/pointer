@@ -13,6 +13,7 @@ from point.models import Pointer
 from point.serializers import PointerSerializer, FeedItemSerializer, PointerDataSerializer
 from members.models import Member
 from users.models import User
+
 import time
 
 class UserPointerStory(APIView):
@@ -30,7 +31,9 @@ class UserPointerStory(APIView):
             raise Http404
 
     def get(self, request, format=None):
+        print(request.user)
         pointer_list = self.get_object(request.user)
+        print(pointer_list)
         serializer = PointerSerializer(pointer_list, many=True)
         return Response(serializer.data)
 

@@ -1,4 +1,6 @@
 import os
+import sys
+
 #password is oliaolia123
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -130,14 +132,6 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
 }
 
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
-# SOCIAL_AUTH_FACEBOOK_SCOPE = [
-#     'email',  # we need to ask for this explicitly
-# ]
-#
-# SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
-#     # pattern is (source key, destination key)
-#     ('email', 'email'),
-# ]
 
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 
@@ -174,3 +168,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+LOGGING = {
+ 'version': 1,
+ 'disable_existing_loggers': False,
+ 'handlers': {
+   'console': {
+     'level': 'ERROR',
+     'class': 'logging.StreamHandler',
+     'stream': sys.stderr
+   },
+  },
+ 'loggers': {
+   'django.request': {
+     'handlers': ['console'],
+     'propogate': True,
+     'level': 'ERROR',
+   }
+ }
+}

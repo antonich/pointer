@@ -34,6 +34,29 @@ class JoinPublicPointer(APIView):
         print("Sending http201Created")
         return Response(status=status.HTTP_201_CREATED)
 
+
+class UnJoinPublicPointer(APIView):
+    """
+        How to join pointer.
+    """
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (TokenAuthentication, )
+
+    def get_object(self, pk):
+        try:
+            return PublicPointer.objects.get(pk=pk)
+        except PublicPointer.DoesNotExist:
+            raise Http404
+
+    def post(self, request, pk, format=None):
+        pointer = self.get_object(pk)
+        try:
+            pointer.join(request.user)
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        print("Sending http201Created")
+        return Response(status=status.HTTP_201_CREATED)
+
 class CreatePublicPointer(generics.CreateAPIView):
         '''
             Public Pointer creation api view.

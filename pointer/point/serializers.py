@@ -77,7 +77,7 @@ class FeedItemSerializer(serializers.ModelSerializer):
         member_serializer= MemberSerializer(member_list, many=True)
 
 
-        for attr, value in instance.__dict__.iteritems():
+        for attr, value in instance.__dict__.items():
             if not attr.startswith('_'):
                 data[attr] = value
 
@@ -103,7 +103,7 @@ class PointerDataSerializer(serializers.ModelSerializer):
         member_serializer= MemberSerializer(member_list, many=True)
 
         # getting only needed attributes
-        for attr, value in instance.__dict__.iteritems():
+        for attr, value in instance.__dict__.items():
             if not attr.startswith('_'):
                 data[attr] = value
 

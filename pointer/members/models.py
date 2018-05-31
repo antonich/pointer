@@ -46,7 +46,8 @@ class MemberManager(models.Manager):
             author = pointer.author
         except:
             raise PointerDoesNotExist
-        return Member.objects.filter(pointer=pointer, status=GOING).exclude(user=author).exclude(user=user)
+        return Member.objects.filter(pointer=pointer, status=GOING).exclude(user=author)
+        # return Member.objects.filter(pointer=pointer, status=GOING).exclude(user=author).exclude(user=user)
 
     def decline_members(self, pointer):
         return Member.objects.filter(pointer=pointer, status=DECLINE)
@@ -78,5 +79,5 @@ class Member(models.Model):
     class Meta:
         ordering = ['user']
 
-    def __unicode__(self):
-        return "Member %s for pointer %s" % (self.user, self.pointer)
+    def __str__(self):
+        return "%s : %s" % (self.user, self.pointer)

@@ -23,3 +23,6 @@ POINT:
 
 USER:
 	- user serializer should be representing user not creating, delete kwargs;
+
+MEMBERS:
+	- when deleting pointer's author, member instance does not delete!;

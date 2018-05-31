@@ -56,7 +56,8 @@ class PointerManager(models.Manager):
         friendslist = Friendship.objects.friends_list(user)
         pointers = list()
         for user in friendslist: # for each friend
-            user_pointers = Pointer.objects.get_planned_pointerslist(user)# getting its pointers
+            user_pointers = Pointer.objects.get_planned_pointerslist(user)
+        # getting its pointers
         #     for friends_pointer in user_pointers:# for each friend's pointer
         #         found_flag = False
         #         for el in pointers: #try to add it to suggested list but check if it is already there
@@ -91,8 +92,8 @@ class Pointer(models.Model):
     class Meta:
         ordering = ['pointer_date']
 
-    def __unicode__(self):
-        return "Pointer %s" % (self.title)
+    def __str__(self):
+        return "Pointer is %s" % (self.title)
 
     def is_author(self, user):
         return True if user == self.author else False
